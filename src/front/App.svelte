@@ -5,11 +5,14 @@
 	import DeathStatsHome from './DeathStatsGUI/DeathStatsTable.svelte';
 	import DeathStatsEdit from './DeathStatsGUI/DeathStatEdit.svelte';
 	import NotFound from './NotFound.svelte';
+	import Info from './Info.svelte';
+
 
 	const routes = {
 		"/": Landing,
 		"/death-stats": DeathStatsHome,
 		"/death-stats/:province": DeathStatsEdit,
+		"/info": Info,
 		"*": NotFound
 	};
 
