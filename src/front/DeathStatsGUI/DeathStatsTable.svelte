@@ -10,7 +10,10 @@
     let deathStats = [];
     let newDeathStat ={
         province: "",
-        year: ""
+        year: "",
+		tumor: "",
+		circulatory_system_disease: "",
+		respiratory_system_disease: ""
     }
 
     const BASE_API_PATH = "/api/v1";
@@ -64,22 +67,31 @@
     <Table bordered>
         <thead>
             <tr>
-                <th>Province</th>
-                <th>Year</th>
-                <th>Actions</th>
+                <th>Provincia</th>
+                <th>Año</th>
+				<th>Tumor</th>
+                <th>Enfermedad circulatoria</th>
+                <th>Enfermedad respiratoria</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><input bind:value="{newDeathStat.province}"></td>
                 <td><input bind:value="{newDeathStat.year}"></td>
-                <td><Button on:click={insertDeathStat}>Insert</Button></td>
+				<td><input bind:value="{newDeathStat.tumor}"></td>
+                <td><input bind:value="{newDeathStat.circulatory_system_disease}"></td>
+                <td><input bind:value="{newDeathStat.respiratory_system_disease}"></td>
+                <td><Button on:click={insertDeathStat}>Insertar</Button></td>
             </tr>
             {#each deathStats as deathStat}
                 <tr>
                     <td><a href="#/deathStat/{deathStat.province}">{deathStat.province}</a></td>
                     <td>{deathStat.year}</td>
-                    <td><Button on:click={deleteDeathStat(deathStat.province)}>Delete</Button></td>
+					<td>{deathStat.tumor}</td>
+					<td>{deathStat.circulatory_system_disease}</td>
+                    <td>{deathStat.respiratory_system_disease}</td>
+                    <td><Button on:click={deleteDeathStat(deathStat.province)}>Borrar</Button></td>
                 </tr>
             {/each}
         </tbody>
