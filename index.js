@@ -74,23 +74,44 @@ app.post(BASE_API_PATH+"/death-stats", (req,res)=>{
  });
 	
 
-//DELETE a un recursos
-app.delete(BASE_API_PATH+"/death-stats/:provinceName", (req,res)=>{
-    var provinceName = req.params.provinceName;
-    
-	console.log(`contact to be deleted: <${provinceName}>`);
+//POST a un recurso, not allowed
+app.post(BASE_API_PATH+"/death-stats", (req,res)=>{
+    res.status(405).send("POST method not allowed");
+});
 
-	deathStats = deathStats.filter((d) => {
-		return (d.name != provinceName)
+//DELETE a un recursos
+
+app.delete(BASE_API_PATH+"/provinceName/:year", (req,res) =>{
+    var provinceName = req.params.provinceName;
+	var year = req.params.year;
+	db.remove({province:provinceName, year:year},{},(err,numProvincesRemoved) => {
+		if(err){
+			console.error("ERROR deleting db province in DELETE: " + err);
+			res.sendStatus(500);
+		}else{
+			if(numProvincesRemoved==0){
+				res.sendStatus(404); //NOT FOUND
+			}else{
+				res.sendStatus(200); //OK
+			}
+		}
 	})
+})
+//DELETE a la lista de recursos
+app.delete(BASE_API_PATH+"/death-stats/", (req,res)=>{
+    deathStats = [];
+    
+	console.log(`all provinces were removed`);
 
     res.sendStatus(200);
  });
-//DELETE a la lista de recursos
-
 //PUT a un recurso
 
 
+//PUT lista de recursos, not allowed
+app.put(BASE_API_PATH+"/death-stats", (req,res)=>{
+    res.status(405).send("PUT method not allowed");
+});
 
 app.listen(PORT,() => {
 	console.log("Server ready at port " + PORT);
