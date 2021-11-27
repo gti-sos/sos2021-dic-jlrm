@@ -72,10 +72,10 @@ app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
 
 
 //POST a la lista de recursos
-app.post(BASE_API_PATH+"/deathstats", (req,res)=>{
+app.post(BASE_API_PATH+"/death-stats", (req,res)=>{
     var newDeathStat = req.body;
     
-    console.log(`new contact to be added: <${JSON.stringify(newContact,null,2)}>`);
+    console.log(`new death stat to be added: <${JSON.stringify(newDeathStat,null,2)}>`);
 
 	db.find({name: newDeathStat.name}, (err,deathStatsInDB) => {
 		if(err){
@@ -83,7 +83,7 @@ app.post(BASE_API_PATH+"/deathstats", (req,res)=>{
 			res.sendStatus(500);
 		}else{
 			if(deathStatsInDB.length == 0){
-				console.log("Inserting new contact in DB: " +JSON.stringify(newDeathStat,null,2));
+				console.log("Inserting new death stat in DB: " +JSON.stringify(newDeathStat,null,2));
 				db.insert(newDeathStat);
 				res.sendStatus(201); //CREATED
 
