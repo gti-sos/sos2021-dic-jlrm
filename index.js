@@ -48,17 +48,49 @@ var deathStats = [
 	
 ]
 
+//Creacion de recursos
 app.get(BASE_API_PATH+"/death-stats/loadInitialData", (req,res) =>{
 	res.send(JSON.stringify(deathStats,null,2));
 });
 
-app.get(BASE_API_PATH+"/info/death-stats", (req,res) =>{
-	res.send("<html><body><h1>Analiza la relación que existe entre las causas de muerte a nivel provincial de Andalucía comprendido entre los años 2005 y 2018</h1></body></html>");
+//GET a la lista de recursos
+app.get(BASE_API_PATH+"/death-stats", (req,res) =>{
+	res.send(JSON.stringify(deathStats,null,2));
 });
 
-app.post(BASE_API_PATH+"/info/death-stats", (req,res) =>{
-	res.send("<html><body><h1>Analiza la relación que existe entre las causas de muerte a nivel provincial de Andalucía comprendido entre los años 2005 y 2018</h1></body></html>");
-});
+//GET a un recurso
+
+
+
+//POST a la lista de recursos
+app.post(BASE_API_PATH+"/death-stats", (req,res)=>{
+    var newDeathStat = req.body;
+    
+    console.log(`new contact to be added: <${JSON.stringify(newDeathStat,null,2)}>`);
+
+    contacts.push(newDeathStat);
+
+    res.sendStatus(201);
+ });
+	
+
+//DELETE a un recursos
+app.delete(BASE_API_PATH+"/death-stats/:provinceName", (req,res)=>{
+    var provinceName = req.params.provinceName;
+    
+	console.log(`contact to be deleted: <${provinceName}>`);
+
+	deathStats = deathStats.filter((d) => {
+		return (d.name != provinceName)
+	})
+
+    res.sendStatus(200);
+ });
+//DELETE a la lista de recursos
+
+//PUT a un recurso
+
+
 
 app.listen(PORT,() => {
 	console.log("Server ready at port " + PORT);
