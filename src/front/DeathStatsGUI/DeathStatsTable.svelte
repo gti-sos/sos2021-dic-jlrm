@@ -48,10 +48,10 @@
                            })
     }
     
-    async function deleteDeathStat(province){
-        console.log("Deleting death stat with name "+ province);
+    async function deleteDeathStat(province, year){
+        console.log("Deleting death stat with name "+ province + "and year" + year);
 
-        const res = await fetch(BASE_API_PATH+"/death-stats/"+province,
+        const res = await fetch(BASE_API_PATH+ "/death-stats/" + province + "/" + year,
                             {
                                 method: "DELETE"
                             }
@@ -91,7 +91,7 @@
 					<td>{deathStat.tumor}</td>
 					<td>{deathStat.circulatory_system_disease}</td>
                     <td>{deathStat.respiratory_system_disease}</td>
-                    <td><Button on:click={deleteDeathStat(deathStat.province)}>Borrar</Button></td>
+                    <td><Button on:click={deleteDeathStat(deathStat.province,deathStat.year)}>Borrar</Button></td>
                 </tr>
             {/each}
         </tbody>
