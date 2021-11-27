@@ -1,4 +1,7 @@
 var BASE_API_PATH = "/api/v1";
+var Datastore = require("nedb");
+
+var db = new Datastore();
 
 var deathStats = [
 	{
@@ -38,6 +41,8 @@ var deathStats = [
 	}
 	
 ]
+
+db.insert(deathStats);
 
 module.exports = (app) => {
 

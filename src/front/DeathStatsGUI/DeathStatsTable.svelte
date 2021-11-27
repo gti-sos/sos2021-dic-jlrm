@@ -1,0 +1,87 @@
+<script>
+    import {
+        onMount
+    } from "svelte";
+
+    import Table from "sveltestrap/src/Table.svelte";
+    import Button from "sveltestrap/src/Button.svelte";
+    
+ 
+    let deathStats = [];
+    let newDeathStat ={
+        province: "",
+        year: ""
+    }
+
+    const BASE_API_PATH = "/api/v1";
+
+    async function getDeathStats(){
+        console.log("Fetching death stats...");
+        const res = await fetch(BASE_API_PATH+"/death-stats");
+
+        if(res.ok){
+            console.log("Ok.");
+            const json = await res.json();
+            deathStats = json;
+            console.log(`We have received ${deathStats.length} death stats.`);
+        }else{
+            console.log("Error!");
+        }
+    }   
+
+    async function insertDeathStat(){
+        console.log("Inserting death stat "+ JSON.stringify(newDeathStat));
+
+        const res = await fetch(BASE_API_PATH+"/death-stats",
+                            {
+                                method: "POST",
+                                body: JSON.stringify(newDeathStat),
+                                headers:{
+                                    "Content-Type": "application/json"
+                                }
+                            }
+                           ).then( (res) => {
+                               getDeathStats();
+                           })
+    }
+    
+    async function deleteDeathStat(province){
+        console.log("Deleting death stat with name "+ province);
+
+        const res = await fetch(BASE_API_PATH+"/death-stats/"+province,
+                            {
+                                method: "DELETE"
+                            }
+                           ).then( (res) => {
+                               getDeathStats();
+                           })
+    }
+    onMount(getDeathStats);
+</script>
+
+<main>
+    <h1>Death Stats</h1>
+    <Table bordered>
+        <thead>
+            <tr>
+                <th>Province</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input bind:value="{newDeathStat.province}"></td>
+                <td><input bind:value="{newDeathStat.year}"></td>
+                <td><Button on:click={insertDeathStat}>Insert</Button></td>
+            </tr>
+            {#each deathStats as deathStat}
+                <tr>
+                    <td><a href="#/deathStat/{deathStat.province}">{deathStat.province}</a></td>
+                    <td>{deathStat.year}</td>
+                    <td><Button on:click={deleteDeathStat(deathStat.province)}>Delete</Button></td>
+                </tr>
+            {/each}
+        </tbody>
+    </Table>
+</main>

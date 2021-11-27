@@ -1,10 +1,22 @@
 <script>
-	export let name;
+	import Router from 'svelte-spa-router';
+
+	import Landing from './Landing.svelte';
+	import DeathStatsHome from './DeathStatsGUI/DeathStatsTable.svelte';
+	import DeathStatsEdit from './DeathStatsGUI/DeathStatEdit.svelte';
+	import NotFound from './NotFound.svelte';
+
+	const routes = {
+		"/": Landing,
+		"/death-stats": DeathStatsHome,
+		"/death-stats/:province": DeathStatsEdit,
+		"*": NotFound
+	};
+
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Router {routes} />
 </main>
 
 <style>
