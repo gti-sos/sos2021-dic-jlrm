@@ -2,7 +2,7 @@
     import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_CHINA = "https://api.worldbank.org/v2/countries/CHN/indicators/SP.POP.TOTL?per_page=5000&format=json"
+    const BASE_API_CHINA = "https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1"
    
     async function loadRentals() {
         console.log("Loading data...");
@@ -42,8 +42,8 @@ async function loadGraph(){
         var value = [] ;
         var date = [] ;
         datos.forEach((china) => {
-            value.push(china.value);
-            date.push(china.date);
+            value.push(china.timeline.11/28/21);
+            date.push(china.country);
         });
 		
 		
@@ -115,25 +115,13 @@ Highcharts.chart('container', {
         </NavItem>
     </Nav>      
   <br>
-   <figure class="highcharts-figure">
+<figure class="highcharts-figure">
     <div id="container"></div>
-    <div id="sliders">
-        <table>
-            <tr>
-                <td><label for="alpha">Angulo alfa</label></td>
-                <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
-            </tr>
-            <tr>
-                <td><label for="beta">Angulo beta</label></td>
-                <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
-            </tr>
-            <tr>
-                <td><label for="depth">Profundidad</label></td>
-                <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
-            </tr>
-        </table>
-    </div>
+    <p class="highcharts-description">
+      
+    </p>
 </figure>
+
 
 </main>
 
