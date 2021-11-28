@@ -39,13 +39,13 @@
 async function loadGraph(){
    await getDatos();
    
-        var ninos = [] ;
-		var ninas = [] ;
+        var nino = [] ;
+		var nina = [] ;
         var country = [] ;
         datos.forEach((ninos) => {
-            ninos.push(ninos.percent_children_employment_m);
+            nino.push(ninos.percent_children_employment_m);
             country.push(ninos.country);
-			ninas.push(ninos.percent_children_employment_f)
+			nina.push(ninos.percent_children_employment_f)
         });
 		
 		
@@ -91,10 +91,10 @@ Highcharts.chart('container', {
     },
     series: [{
         name: 'Ninos',
-        data: ninos
+        data: nino
     }, {
         name: 'Ninas',
-        data: ninos
+        data: nina
     }]
 });
 
@@ -129,8 +129,12 @@ Highcharts.chart('container', {
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
+        An area chart showing a gap in the data. By default, Highcharts treats
+        <code>null</code> values as missing data, and will allow for gaps in
+        datasets.
     </p>
 </figure>
+
 
 </main>
 
