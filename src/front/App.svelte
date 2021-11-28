@@ -5,8 +5,11 @@
 	import DeathStatsHome from './DeathStatsGUI/DeathStatsTable.svelte';
 	import DeathStatsEdit from './DeathStatsGUI/DeathStatEdit.svelte';
 	import DeathStatsGraph from './DeathStatsGUI/DeathStatsGraph.svelte';
-	import DeathStatsGraph2 from './DeathStatsGUI/DeathStatsGraph2.svelte';
+	import Graph2 from './DeathStatsGUI/DeathStatsGraph2.svelte';
 	import Graph3 from './DeathStatsGUI/grafica3.svelte';
+	import Graph4 from './DeathStatsGUI/grafica4.svelte';
+	import Graph5 from './DeathStatsGUI/grafica5.svelte';
+	import Graph6 from './DeathStatsGUI/grafica6.svelte';
 	import NotFound from './NotFound.svelte';
 	import Info from './Info.svelte';
 
@@ -15,8 +18,11 @@
 		"/": Landing,
 		"/death-stats": DeathStatsHome,
 		"/death-stats-graph1": DeathStatsGraph,
-		"/death-stats-graph2": DeathStatsGraph2,
-		"/death-stats-graph3": Graph3,
+		"/graph2": Graph2,
+		"/graph3": Graph3,
+		"/graph4": Graph4,
+		"/graph5": Graph5,
+		"/graph6": Graph6,
 		"/death-stats/:province/:year": DeathStatsEdit,
 		"/info": Info,
 		"*": NotFound
@@ -53,6 +59,11 @@
         <DropdownMenu end>
           <DropdownItem><a href="#/death-stats">Tabla de la API</a></DropdownItem>
           <DropdownItem><a href="#/death-stats-graph1">Grafico de la API</a></DropdownItem>
+          <DropdownItem><a href="#/graph3">Grafico Integrado</a></DropdownItem>
+	      <DropdownItem><a href="#/graph2">Grafico Usado 2</a></DropdownItem>
+          <DropdownItem><a href="#/graph4">Grafico Usado 2</a></DropdownItem>
+          <DropdownItem><a href="#/graph5">Grafico Externo 1</a></DropdownItem>
+		  <DropdownItem><a href="#/graph6">Grafico Externo 2</a></DropdownItem>
           <DropdownItem divider />
           <DropdownItem>Documentacion POSTMAN</DropdownItem>
         </DropdownMenu>
