@@ -48,26 +48,6 @@ app.use(pathschildren, function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
-//Integracion proxy externo Usada 4
-var pathschildren = '/api/v2/children-employment/';
-var apiServerchildren = 'https://sos2021-24.herokuapp.com/';
-
-app.use(pathschildren, function (req, res) {
-  var url = apiServerchildren + req.url;
-  console.log('piped: ' + req.url);
-  req.pipe(request(url)).pipe(res);
-});
-
-//Integracion proxy externo Usada 5
-var pathsChina = "/v2/countries/CHN/indicators/SP.POP.TOTL?per_page=5000&format=json";
-var apiServerChina = "http://api.worldbank.org/";
-
-app.use(pathChina, function (req, res) {
-  var url = apiServerChina + req.url;
-  console.log('piped: ' + req.url);
-  req.pipe(request(url)).pipe(res);
-});
-
 app.use("/", express.static(path.join(__dirname,"public")));
 
 app.listen(port, () =>{
