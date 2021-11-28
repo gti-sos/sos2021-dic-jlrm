@@ -42,7 +42,7 @@ async function loadGraph(){
         var value = [] ;
         var date = [] ;
         datos.forEach((china) => {
-            value.push(china.timeline.11/28/21);
+            value.push(china.timeline);
             date.push(china.country);
         });
 		
