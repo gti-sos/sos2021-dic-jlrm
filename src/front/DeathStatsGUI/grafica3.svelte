@@ -57,8 +57,8 @@
         marker: { size: 12 }
         };
         var trace2 = {
-        x: country,
-        y: circulatory,
+        x: province,
+        y: parseInt(circulatory),
         mode: 'markers',
         type: 'scatter',
         name: 'Datos de muertes en Andalucia',
