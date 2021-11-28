@@ -1,134 +1,124 @@
 <script>
-    import {
-        onMount,
-    } from "svelte";
-
-	import Alert from "sveltestrap/src/Button.svelte";
-
-
-    let deathStats = [];
-    let newDeathStat ={
-        province: "",
-        year: "",
-		tumor: "",
-		circulatory_system_disease: "",
-		respiratory_system_disease: ""
-    }
-
-    const BASE_API_PATH = "/api/v1";
-
-    async function getDeathStats(){
-        console.log("Fetching death stats...");
-        const res = await fetch(BASE_API_PATH+"/death-stats");
-
-        if(res.ok){
-            console.log("Ok.");
-            const json = await res.json();
-            deathStats = json;
-            console.log(`We have received ${deathStats.length} death stats.`);
-        }else{
-            console.log("Error!");
+    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
+    var errorMsg = "";
+    var datos = [];
+    const BASE_API_CHILDREN = "https://sos2021-24.herokuapp.com/api/v2/children-employment"
+   
+    async function loadRentals() {
+        console.log("Loading data...");
+        const res = await fetch(BASE_API_CHILDREN).then(
+          function (res) {
+            if (res.ok) {
+              errorMsg = "";
+              console.log("OK");
+            } else {
+              if (res.status === 500) {
+                errorMsg = "No se ha podido acceder a la base de datos";
+              }
+              console.log("ERROR!" + errorMsg);
+            }
+          }
+        );
+      }
+    
+      async function getDatos() {
+        console.log("Fetching data...");
+        await loadRentals();
+        const res = await fetch(BASE_API_CHILDREN);
+        if (res.ok) {
+          const json = await res.json();
+          datos = json;
+          console.log(`We have received ${datos.length} stats.`);
+          console.log("Ok");
+        } else {
+          errorMsg = "Error recuperando datos";
+          console.log("ERROR!" + errorMsg);
         }
-    }   
+      }
 
 async function loadGraph(){
+   await getDatos();
+   
+        var total = [] ;
+        var country = [] ;
+        datos.forEach((anxiety) => {
+            total.push(anxiety.percent_children_employment_t);
+            country.push(anxiety.country);
+        });
+		
+		
+// Set up the chart
 Highcharts.chart('container', {
-
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
     title: {
-        text: 'Solar Employment Growth by Sector, 2010-2016'
+        text: 'Porcentaje de ninios empleados'
     },
-
-    subtitle: {
-        text: 'Source: thesolarfoundation.com'
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },
-
-    yAxis: {
-        title: {
-            text: 'Number of Employees'
+    accessibility: {
+        point: {
+            valueSuffix: '%'
         }
     },
-
-    xAxis: {
-        accessibility: {
-            rangeDescription: 'Range: 2010 to 2017'
-        }
-    },
-
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-
     plotOptions: {
-        series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 2010
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
         }
     },
-
     series: [{
-        name: 'Installation',
-        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-    }, {
-        name: 'Manufacturing',
-        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-    }, {
-        name: 'Sales & Distribution',
-        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-    }, {
-        name: 'Project Development',
-        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-    }, {
-        name: 'Other',
-        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-    }],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
+        name: 'Paises',
+        colorByPoint: true,
+		 data: [
+        	{
+                name: country,
+                y: parseInt(total),
             }
-        }]
-    }
-
+        	]
+    }]
 });
+
 }
 
 </script>
 
 <svelte:head>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
-  <center><h1>Estadísticas de muerte por enfermedades en Andalucia</h1></center>
+  <center><h1>Estadísticas de niños empleado por pais</h1></center>
 <br>
- <Alert color="secondary">
-    La siguiente tabla muestra información sobre las muertes que se han producido en las provincias de Andalucia año
-	tras año, en este caso intenta asociar las muertes producidas por enfermedades, como es el caso de muertes por 
-	tumor, enfermedades del sistema respiratorio y enfermedades del sistema circulatorio.
-  </Alert>
-  <br><br>
-   <figure class="highcharts-figure">
+  <br>
+  <Nav>
+    <NavItem>
+    <NavLink href="/">Página Principal</NavLink>
+    </NavItem>
+    <NavItem>
+    <NavLink href="#/integrations">Integraciones</NavLink>
+    </NavItem>
+    <NavItem>
+        <NavLink href="http://sos2021-24.herokuapp.com/#/children-employment">Cargar Datos Iniciales</NavLink>
+        </NavItem>
+    </Nav>      
+  <br>
+
+<figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
-        Basic line chart showing trends in a dataset. This chart includes the
-        <code>series-label</code> module, which adds a label to each line for
-        enhanced readability.
     </p>
 </figure>
 
@@ -137,7 +127,7 @@ Highcharts.chart('container', {
 <style>
 .highcharts-figure,
 .highcharts-data-table table {
-    min-width: 360px;
+    min-width: 320px;
     max-width: 800px;
     margin: 1em auto;
 }
@@ -178,4 +168,7 @@ Highcharts.chart('container', {
     background: #f1f7ff;
 }
 
+input[type="number"] {
+    min-width: 50px;
+}
 </style>

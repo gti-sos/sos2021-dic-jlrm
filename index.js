@@ -39,6 +39,14 @@ app.use(pathsanxiety, function (req, res) {
 });
 
 //Integracion proxy Usada 2
+var pathschildren = '/api/v2/anxiety_stats';
+var apiServerchildren = 'https://sos2021-sep-jpcc.herokuapp.com/';
+
+app.use(pathschildren, function (req, res) {
+  var url = apiServerchildren + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
 
 app.use("/", express.static(path.join(__dirname,"public")));
 
