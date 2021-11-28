@@ -60,7 +60,7 @@ Highcharts.chart('container', {
         text: '-------'
     },
     xAxis: {
-        categories: phase,
+        categories: country,
         crosshair: true
     },
     yAxis: {
@@ -85,7 +85,7 @@ Highcharts.chart('container', {
     },
     series: [{
         name: 'China',
-        data: value
+        data: plata
 }]
 });
 
