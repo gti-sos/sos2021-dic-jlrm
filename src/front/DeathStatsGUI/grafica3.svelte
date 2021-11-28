@@ -48,7 +48,7 @@
         console.log(schizophrenia_population);
         var trace1 = {
         
-        x: province2,
+        x: country,
         y: parseInt(schizophrenia_men),
         mode: 'markers',
         type: 'scatter',
