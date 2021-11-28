@@ -60,7 +60,7 @@
           <DropdownItem><a href="#/death-stats">Tabla de la API</a></DropdownItem>
           <DropdownItem><a href="#/death-stats-graph1">Grafico de la API</a></DropdownItem>
           <DropdownItem><a href="#/graph3">Grafico Integrado</a></DropdownItem>
-	      <DropdownItem><a href="#/graph2">Grafico Usado 2</a></DropdownItem>
+	      <DropdownItem><a href="#/graph2">Grafico Usado 1</a></DropdownItem>
           <DropdownItem><a href="#/graph4">Grafico Usado 2</a></DropdownItem>
           <DropdownItem><a href="#/graph5">Grafico Externo 1</a></DropdownItem>
 		  <DropdownItem><a href="#/graph6">Grafico Externo 2</a></DropdownItem>

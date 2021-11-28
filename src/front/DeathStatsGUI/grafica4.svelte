@@ -1,37 +1,53 @@
 <script>
-    import {
-        onMount,
-    } from "svelte";
-
-	import Alert from "sveltestrap/src/Button.svelte";
-
-
-    let deathStats = [];
-    let newDeathStat ={
-        province: "",
-        year: "",
-		tumor: "",
-		circulatory_system_disease: "",
-		respiratory_system_disease: ""
-    }
-
-    const BASE_API_PATH = "/api/v1";
-
-    async function getDeathStats(){
-        console.log("Fetching death stats...");
-        const res = await fetch(BASE_API_PATH+"/death-stats");
-
-        if(res.ok){
-            console.log("Ok.");
-            const json = await res.json();
-            deathStats = json;
-            console.log(`We have received ${deathStats.length} death stats.`);
-        }else{
-            console.log("Error!");
+    import { Nav, NavItem, NavLink } from "sveltestrap";
+    var errorMsg = "";
+    var datos = [];
+    const BASE_API_OLIMPIC = "https://sos2021-sep-cga.herokuapp.com/api/v2/olimpic-stats"
+   
+    async function loadRentals() {
+        console.log("Loading data...");
+        const res = await fetch(BASE_API_OLIMPIC).then(
+          function (res) {
+            if (res.ok) {
+              errorMsg = "";
+              console.log("OK");
+            } else {
+              if (res.status === 500) {
+                errorMsg = "No se ha podido acceder a la base de datos";
+              }
+              console.log("ERROR!" + errorMsg);
+            }
+          }
+        );
+      }
+    
+      async function getDatos() {
+        console.log("Fetching data...");
+        await loadRentals();
+        const res = await fetch(BASE_API_OLIMPIC);
+        if (res.ok) {
+          const json = await res.json();
+          datos = json;
+          console.log(`We have received ${datos.length} stats.`);
+          console.log("Ok");
+        } else {
+          errorMsg = "Error recuperando datos";
+          console.log("ERROR!" + errorMsg);
         }
-    }   
+      }
 
 async function loadGraph(){
+   await getDatos();
+   
+        var plata = [] ;
+        var anio = [] ;
+        datos.forEach((olimpic) => {
+           
+            total.push(olimpic.silver_medal);
+            anyo.push(olimpic.year);
+        });
+		
+		
 // Set up the chart
 const chart = new Highcharts.Chart({
     chart: {
@@ -51,13 +67,16 @@ const chart = new Highcharts.Chart({
     subtitle: {
         text: 'Test options by dragging the sliders below'
     },
+	 xAxis: {
+        categories: anio,
+    },
     plotOptions: {
         column: {
             depth: 25
         }
     },
     series: [{
-        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        data: plata
     }]
 });
 
@@ -98,12 +117,6 @@ showValues();
   <br><br>
    <figure class="highcharts-figure">
     <div id="container"></div>
-    <p class="highcharts-description">
-        Chart designed to highlight 3D column chart rendering options.
-        Move the sliders below to change the basic 3D settings for the chart.
-        3D column charts are generally harder to read than 2D charts, but provide
-        an interesting visual effect.
-    </p>
     <div id="sliders">
         <table>
             <tr>
