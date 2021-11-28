@@ -2,7 +2,7 @@
     import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_OLIMPIC = "https://sos2021-sep-cga.herokuapp.com/api/v2/olimpic-stats"
+    const BASE_API_OLIMPIC = "https://sos2021-sep-jpcc.herokuapp.com/api/v2/anxiety_stats"
    
     async function loadRentals() {
         console.log("Loading data...");
@@ -43,7 +43,7 @@ async function loadGraph(){
         var anio = [] ;
         datos.forEach((olimpic) => {
            
-            total.push(olimpic.silver_medal);
+            total.push(olimpic.anxiety_men);
             anyo.push(olimpic.year);
         });
 		

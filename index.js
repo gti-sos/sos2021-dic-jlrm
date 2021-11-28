@@ -29,11 +29,11 @@ app.use(pathschizophrenia, function (req, res) {
 });
 
 //Integracion proxy Usada 1
-var pathsolimpic = '/api/v2/olimpic-stats';
-var apiServerolimpic = 'https://sos2021-sep-cga.herokuapp.com/';
+var pathsanxiety = '/api/v2/anxiety_stats';
+var apiServeranxiety = 'https://sos2021-sep-jpcc.herokuapp.com/';
 
-app.use(pathsolimpic, function (req, res) {
-  var url = apiServerolimpic + req.url;
+app.use(pathsanxiety, function (req, res) {
+  var url = apiServeranxiety + req.url;
   console.log('piped: ' + req.url);
   req.pipe(request(url)).pipe(res);
 });
