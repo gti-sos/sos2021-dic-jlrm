@@ -1,12 +1,12 @@
 <script>
-    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
+   import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_COVID = "https://disease.sh/v3/covid-19/therapeutics"
+    const BASE_API_ANXIETY = "https://disease.sh/v3/covid-19/therapeutics"
    
     async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_COVID).then(
+        const res = await fetch(BASE_API_ANXIETY).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -24,7 +24,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_COVID);
+        const res = await fetch(BASE_API_ANXIETY);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -39,12 +39,13 @@
 async function loadGraph(){
    await getDatos();
    
-        var value = [] ;
-        var phase = [] ;
-        datos.forEach((covid) => {
-            value.push(covid.candidates);
-            phase.push(covid.phase);
+        var plata = [] ;
+        var country = [] ;
+        datos.forEach((anxiety) => {
+            plata.push(anxiety.phases.candidates);
+            country.push(anxiety.phases.phase);
         });
+		
 		
 		
 // Set up the chart
@@ -53,7 +54,7 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Población de China por anio'
+        text: 'Candidatas por fase de vacuna covid'
     },
     subtitle: {
         text: '-------'
@@ -100,7 +101,7 @@ Highcharts.chart('container', {
 </svelte:head>
 
 <main>
-  <center><h1>Estadísticas de ansiedad en hombres por año</h1></center>
+  <center><h1>Candidatas por fase de vacuna covid</h1></center>
 <br>
   <br>
   <Nav>
