@@ -50,13 +50,13 @@
         <DropdownToggle nav caret>API</DropdownToggle>
         <DropdownMenu end>
           <DropdownItem><a href="#/death-stats">Tabla de la API</a></DropdownItem>
-          <DropdownItem>Gráfico de la API</DropdownItem>
+          <DropdownItem><a href="#/death-stats-graph1">Grafico de la API</a></DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>Documentación POSTMAN</DropdownItem>
+          <DropdownItem>Documentacion POSTMAN</DropdownItem>
         </DropdownMenu>
       </Dropdown>
       <NavItem>
-        <NavLink href="#/info/">Información</NavLink>
+        <NavLink href="#/info/">Informacion</NavLink>
       </NavItem>
     </Nav>
   </Collapse>

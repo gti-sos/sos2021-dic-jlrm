@@ -3,6 +3,8 @@ var Datastore = require("nedb");
 
 var db = new Datastore();
 
+
+module.exports.register = (app, BASE_API_PATH_v2) => {
 var deathStats = [
 	{
 		"province" : "almeria",
@@ -56,10 +58,7 @@ var deathStatsSchema = {
     "circulatory_system_disease": Number,
     "respiratory_system_disease": Number
 };
-
-
-module.exports = (app) => {
-
+	
     //Creacion de recursos
 app.get(BASE_API_PATH+"/death-stats/loadInitialData", (req,res) =>{
 	res.send(JSON.stringify(deathStats,null,2));
