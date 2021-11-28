@@ -11824,14 +11824,14 @@ var app = (function () {
     			td5 = element("td");
     			create_component(button.$$.fragment);
     			t10 = space();
-    			attr_dev(a, "href", a_href_value = "#/deathStat/" + /*deathStat*/ ctx[10].province);
+    			attr_dev(a, "href", a_href_value = "#/death-stats/" + /*deathStat*/ ctx[10].province + "/" + /*deathStat*/ ctx[10].year);
     			add_location(a, file$4, 99, 24, 3351);
     			add_location(td0, file$4, 99, 20, 3347);
-    			add_location(td1, file$4, 100, 20, 3444);
-    			add_location(td2, file$4, 101, 5, 3475);
-    			add_location(td3, file$4, 102, 5, 3507);
-    			add_location(td4, file$4, 103, 20, 3575);
-    			add_location(td5, file$4, 104, 20, 3643);
+    			add_location(td1, file$4, 100, 20, 3463);
+    			add_location(td2, file$4, 101, 5, 3494);
+    			add_location(td3, file$4, 102, 5, 3526);
+    			add_location(td4, file$4, 103, 20, 3594);
+    			add_location(td5, file$4, 104, 20, 3662);
     			add_location(tr, file$4, 98, 16, 3322);
     		},
     		m: function mount(target, anchor) {
@@ -11861,7 +11861,7 @@ var app = (function () {
     			ctx = new_ctx;
     			if ((!current || dirty & /*deathStats*/ 1) && t0_value !== (t0_value = /*deathStat*/ ctx[10].province + "")) set_data_dev(t0, t0_value);
 
-    			if (!current || dirty & /*deathStats*/ 1 && a_href_value !== (a_href_value = "#/deathStat/" + /*deathStat*/ ctx[10].province)) {
+    			if (!current || dirty & /*deathStats*/ 1 && a_href_value !== (a_href_value = "#/death-stats/" + /*deathStat*/ ctx[10].province + "/" + /*deathStat*/ ctx[10].year)) {
     				attr_dev(a, "href", a_href_value);
     			}
 
@@ -12563,26 +12563,26 @@ var app = (function () {
     			t17 = space();
     			td5 = element("td");
     			create_component(button.$$.fragment);
-    			add_location(th0, file$3, 76, 20, 2103);
-    			add_location(th1, file$3, 77, 20, 2142);
-    			add_location(th2, file$3, 78, 20, 2175);
-    			add_location(th3, file$3, 79, 5, 2195);
-    			add_location(th4, file$3, 80, 20, 2260);
-    			add_location(th5, file$3, 81, 20, 2325);
-    			add_location(tr0, file$3, 75, 16, 2078);
-    			add_location(thead, file$3, 74, 12, 2054);
-    			add_location(td0, file$3, 86, 20, 2447);
-    			add_location(input0, file$3, 87, 24, 2498);
-    			add_location(td1, file$3, 87, 20, 2494);
-    			add_location(input1, file$3, 88, 9, 2547);
-    			add_location(td2, file$3, 88, 5, 2543);
-    			add_location(input2, file$3, 89, 24, 2612);
-    			add_location(td3, file$3, 89, 20, 2608);
-    			add_location(input3, file$3, 90, 24, 2683);
-    			add_location(td4, file$3, 90, 20, 2679);
-    			add_location(td5, file$3, 91, 20, 2750);
-    			add_location(tr1, file$3, 85, 16, 2422);
-    			add_location(tbody, file$3, 84, 12, 2398);
+    			add_location(th0, file$3, 76, 20, 2157);
+    			add_location(th1, file$3, 77, 20, 2196);
+    			add_location(th2, file$3, 78, 20, 2229);
+    			add_location(th3, file$3, 79, 5, 2249);
+    			add_location(th4, file$3, 80, 20, 2314);
+    			add_location(th5, file$3, 81, 20, 2379);
+    			add_location(tr0, file$3, 75, 16, 2132);
+    			add_location(thead, file$3, 74, 12, 2108);
+    			add_location(td0, file$3, 86, 20, 2501);
+    			add_location(input0, file$3, 87, 24, 2552);
+    			add_location(td1, file$3, 87, 20, 2548);
+    			add_location(input1, file$3, 88, 9, 2601);
+    			add_location(td2, file$3, 88, 5, 2597);
+    			add_location(input2, file$3, 89, 24, 2666);
+    			add_location(td3, file$3, 89, 20, 2662);
+    			add_location(input3, file$3, 90, 24, 2737);
+    			add_location(td4, file$3, 90, 20, 2733);
+    			add_location(td5, file$3, 91, 20, 2804);
+    			add_location(tr1, file$3, 85, 16, 2476);
+    			add_location(tbody, file$3, 84, 12, 2452);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -12704,7 +12704,7 @@ var app = (function () {
     			t0 = text("ERROR: ");
     			t1 = text(/*errorMsg*/ ctx[6]);
     			set_style(p, "color", "red");
-    			add_location(p, file$3, 96, 8, 2923);
+    			add_location(p, file$3, 96, 8, 2977);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -12761,13 +12761,17 @@ var app = (function () {
     	let main;
     	let h3;
     	let t0;
-    	let strong;
-    	let t1_value = /*params*/ ctx[0].provinceName + "";
+    	let strong0;
+    	let t1_value = /*params*/ ctx[0].province + "";
     	let t1;
     	let t2;
-    	let table;
+    	let strong1;
+    	let t3_value = /*params*/ ctx[0].year + "";
     	let t3;
     	let t4;
+    	let table;
+    	let t5;
+    	let t6;
     	let button;
     	let current;
 
@@ -12798,18 +12802,22 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			h3 = element("h3");
-    			t0 = text("Edit Death Stat ");
-    			strong = element("strong");
+    			t0 = text("Editando ");
+    			strong0 = element("strong");
     			t1 = text(t1_value);
-    			t2 = space();
-    			create_component(table.$$.fragment);
-    			t3 = space();
-    			if (if_block) if_block.c();
+    			t2 = text(" en el año ");
+    			strong1 = element("strong");
+    			t3 = text(t3_value);
     			t4 = space();
+    			create_component(table.$$.fragment);
+    			t5 = space();
+    			if (if_block) if_block.c();
+    			t6 = space();
     			create_component(button.$$.fragment);
-    			add_location(strong, file$3, 72, 24, 1973);
-    			add_location(h3, file$3, 72, 4, 1953);
-    			add_location(main, file$3, 71, 0, 1942);
+    			add_location(strong0, file$3, 72, 17, 1990);
+    			add_location(strong1, file$3, 72, 62, 2035);
+    			add_location(h3, file$3, 72, 4, 1977);
+    			add_location(main, file$3, 71, 0, 1966);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12818,18 +12826,22 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, h3);
     			append_dev(h3, t0);
-    			append_dev(h3, strong);
-    			append_dev(strong, t1);
-    			append_dev(main, t2);
-    			mount_component(table, main, null);
-    			append_dev(main, t3);
-    			if (if_block) if_block.m(main, null);
+    			append_dev(h3, strong0);
+    			append_dev(strong0, t1);
+    			append_dev(h3, t2);
+    			append_dev(h3, strong1);
+    			append_dev(strong1, t3);
     			append_dev(main, t4);
+    			mount_component(table, main, null);
+    			append_dev(main, t5);
+    			if (if_block) if_block.m(main, null);
+    			append_dev(main, t6);
     			mount_component(button, main, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if ((!current || dirty & /*params*/ 1) && t1_value !== (t1_value = /*params*/ ctx[0].provinceName + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*params*/ 1) && t1_value !== (t1_value = /*params*/ ctx[0].province + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*params*/ 1) && t3_value !== (t3_value = /*params*/ ctx[0].year + "")) set_data_dev(t3, t3_value);
     			const table_changes = {};
 
     			if (dirty & /*$$scope, updatedCirculatory, updatedRespiratory, updatedTumor, updatedYear, updatedProvince*/ 16446) {
@@ -12844,7 +12856,7 @@ var app = (function () {
     				} else {
     					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(main, t4);
+    					if_block.m(main, t6);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -12904,7 +12916,7 @@ var app = (function () {
 
     	async function getDeathStat() {
     		console.log("Fetching death stact...");
-    		const res = await fetch("/api/v1/death-stats/" + params.provinceName);
+    		const res = await fetch("/api/v1/death-stats/" + params.province + "/" + params.year);
 
     		if (res.ok) {
     			console.log("Ok:");
@@ -12923,12 +12935,12 @@ var app = (function () {
     	}
 
     	async function updateDeathStat() {
-    		console.log("Updating death stat..." + JSON.stringify(params.provinceName));
+    		console.log("Updating death stat..." + JSON.stringify(params.province));
 
-    		await fetch("/api/v1/death-stats/" + params.provinceName, {
+    		await fetch("/api/v1/death-stats/" + params.province + "/" + params.year, {
     			method: "PUT",
     			body: JSON.stringify({
-    				province: params.provinceName,
+    				province: params.province,
     				year: updatedYear,
     				tumor: updatedTumor,
     				respiratory_system_disease: updatedRespiratory,

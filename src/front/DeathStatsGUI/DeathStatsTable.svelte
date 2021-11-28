@@ -97,7 +97,7 @@
             </tr>
             {#each deathStats as deathStat}
                 <tr>
-                    <td><a href="#/deathStat/{deathStat.province}">{deathStat.province}</a></td>
+                    <td><a href="#/death-stats/{deathStat.province}/{deathStat.year}">{deathStat.province}</a></td>
                     <td>{deathStat.year}</td>
 					<td>{deathStat.tumor}</td>
 					<td>{deathStat.circulatory_system_disease}</td>

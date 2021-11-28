@@ -26,7 +26,7 @@
     async function getDeathStat() {
 
         console.log("Fetching death stact...");
-        const res = await fetch("/api/v1/death-stats/" + params.provinceName);
+        const res = await fetch("/api/v1/death-stats/" + params.province + "/" + params.year);
 
         if (res.ok) {
             console.log("Ok:");
@@ -47,12 +47,12 @@
 
     async function updateDeathStat() {
 
-        console.log("Updating death stat..." + JSON.stringify(params.provinceName));
+        console.log("Updating death stat..." + JSON.stringify(params.province));
 
-        const res = await fetch("/api/v1/death-stats/" + params.provinceName, {
+        const res = await fetch("/api/v1/death-stats/" + params.province + "/" + params.year, {
             method: "PUT",
             body: JSON.stringify({
-                province: params.provinceName,
+                province: params.province,
                 year: updatedYear,
 				tumor: updatedTumor,
                 respiratory_system_disease: updatedRespiratory,
@@ -70,7 +70,7 @@
     }
 </script>
 <main>
-    <h3>Edit Death Stat <strong>{params.provinceName}</strong></h3>
+    <h3>Editando <strong>{params.province}</strong> en el año <strong>{params.year}</strong></h3>
         <Table bordered>
             <thead>
                 <tr>
