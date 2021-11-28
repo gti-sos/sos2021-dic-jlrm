@@ -15,31 +15,51 @@
 		"/info": Info,
 		"*": NotFound
 	};
+	
+  import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+  } from 'sveltestrap';
 
+  let isOpen = false;
+
+  function handleUpdate(event) {
+    isOpen = event.detail.isOpen;
+  }
 </script>
 
-<main>
-	<Router {routes} />
-</main>
+<Navbar color="dark" dark expand="md">
+  <NavbarBrand href="/">Estadisticas de muerte - Andalucia</NavbarBrand>
+  <NavbarToggler on:click={() => (isOpen = !isOpen)} />
+  <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
+    <Nav class="mr-auto" navbar>
+	 <Dropdown nav inNavbar>
+        <DropdownToggle nav caret>API</DropdownToggle>
+        <DropdownMenu end>
+          <DropdownItem><a href="#/death-stats">Tabla de la API</a></DropdownItem>
+          <DropdownItem>Gráfico de la API</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Documentación POSTMAN</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+      <NavItem>
+        <NavLink href="#/info/">Información</NavLink>
+      </NavItem>
+    </Nav>
+  </Collapse>
+</Navbar>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<body>
+	<div class="maincontainer">
+		<Router {routes} />
+	</div>
+</body>

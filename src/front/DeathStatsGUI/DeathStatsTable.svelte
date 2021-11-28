@@ -1,12 +1,13 @@
 <script>
     import {
-        onMount
+        onMount,
     } from "svelte";
 
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
-    
- 
+	import Alert from "sveltestrap/src/Button.svelte";
+
+
     let deathStats = [];
     let newDeathStat ={
         province: "",
@@ -62,8 +63,18 @@
     onMount(getDeathStats);
 </script>
 
+ 
+
+
 <main>
-    <h1>Death Stats</h1>
+  <center><h1>Estadísticas de muerte por enfermedades en Andalucia</h1></center>
+<br>
+ <Alert color="secondary">
+    La siguiente tabla muestra información sobre las muertes que se han producido en las provincias de Andalucia año
+	tras año, en este caso intenta asociar las muertes producidas por enfermedades, como es el caso de muertes por 
+	tumor, enfermedades del sistema respiratorio y enfermedades del sistema circulatorio.
+  </Alert>
+  <br><br>
     <Table bordered>
         <thead>
             <tr>
