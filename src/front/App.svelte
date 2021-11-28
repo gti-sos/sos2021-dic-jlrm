@@ -6,6 +6,7 @@
 	import DeathStatsEdit from './DeathStatsGUI/DeathStatEdit.svelte';
 	import DeathStatsGraph from './DeathStatsGUI/DeathStatsGraph.svelte';
 	import DeathStatsGraph2 from './DeathStatsGUI/DeathStatsGraph2.svelte';
+	import Graph3 from './DeathStatsGUI/grafica3.svelte';
 	import NotFound from './NotFound.svelte';
 	import Info from './Info.svelte';
 
@@ -15,6 +16,7 @@
 		"/death-stats": DeathStatsHome,
 		"/death-stats-graph1": DeathStatsGraph,
 		"/death-stats-graph2": DeathStatsGraph2,
+		"/death-stats-graph3": Graph3,
 		"/death-stats/:province/:year": DeathStatsEdit,
 		"/info": Info,
 		"*": NotFound

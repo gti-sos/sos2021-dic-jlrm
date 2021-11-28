@@ -17,6 +17,18 @@ var death_stats_api_v1 = require("./src/back/v1");
 death_stats_api.register(app, BASE_API_PATH_v2);
 death_stats_api_v1.register(app, BASE_API_PATH);
 
+
+//Integracion proxy
+var pathschizophrenia = '/api/v2/schizophrenia-stats';
+var apiServerschizophrenia = 'https://sos2021-sep-arc.herokuapp.com/';
+
+app.use(pathschizophrenia, function (req, res) {
+  var url = apiServerschizophrenia + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
+
 app.use("/", express.static(path.join(__dirname,"public")));
 
 app.listen(port, () =>{
