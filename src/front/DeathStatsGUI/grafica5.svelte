@@ -2,11 +2,11 @@
     import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_CHINA = "https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1"
+    const BASE_API_COVID = "https://disease.sh/v3/covid-19/therapeutics"
    
     async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_CHINA).then(
+        const res = await fetch(BASE_API_COVID).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -24,7 +24,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_CHINA);
+        const res = await fetch(BASE_API_COVID);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -40,10 +40,10 @@ async function loadGraph(){
    await getDatos();
    
         var value = [] ;
-        var date = [] ;
-        datos.forEach((china) => {
-            value.push(china.timeline);
-            date.push(china.country);
+        var phase = [] ;
+        datos.forEach((covid) => {
+            value.push(covid.candidates);
+            date.push(covid.phase);
         });
 		
 		
