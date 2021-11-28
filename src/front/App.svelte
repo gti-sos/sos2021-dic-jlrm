@@ -4,6 +4,8 @@
 	import Landing from './Landing.svelte';
 	import DeathStatsHome from './DeathStatsGUI/DeathStatsTable.svelte';
 	import DeathStatsEdit from './DeathStatsGUI/DeathStatEdit.svelte';
+	import DeathStatsGraph from './DeathStatsGUI/DeathStatsGraph.svelte';
+	import DeathStatsGraph2 from './DeathStatsGUI/DeathStatsGraph2.svelte';
 	import NotFound from './NotFound.svelte';
 	import Info from './Info.svelte';
 
@@ -11,7 +13,9 @@
 	const routes = {
 		"/": Landing,
 		"/death-stats": DeathStatsHome,
-		"/death-stats/:province": DeathStatsEdit,
+		"/death-stats-graph1": DeathStatsGraph,
+		"/death-stats-graph2": DeathStatsGraph2,
+		"/death-stats/:province/:year": DeathStatsEdit,
 		"/info": Info,
 		"*": NotFound
 	};
