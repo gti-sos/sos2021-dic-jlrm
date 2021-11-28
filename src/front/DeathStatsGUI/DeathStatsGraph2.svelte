@@ -55,10 +55,10 @@ Highcharts.chart('container', {
         type: 'area'
     },
     title: {
-        text: 'Fruit consumption *'
+        text: 'Porcentaje de menores trabajando por paises'
     },
     subtitle: {
-        text: '* Jane\'s banana consumption is unknown',
+        text: '---------------',
         align: 'right',
         verticalAlign: 'bottom'
     },
@@ -78,7 +78,7 @@ Highcharts.chart('container', {
     },
     yAxis: {
         title: {
-            text: 'Y-Axis'
+            text: 'Porcentaje'
         }
     },
     plotOptions: {
@@ -110,7 +110,7 @@ Highcharts.chart('container', {
 </svelte:head>
 
 <main>
-  <center><h1>Estadísticas de niños empleado por pais</h1></center>
+  <center><h1>Estadísticas de menores trabajando por pais</h1></center>
 <br>
   <br>
   <Nav>
@@ -129,9 +129,6 @@ Highcharts.chart('container', {
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
-        An area chart showing a gap in the data. By default, Highcharts treats
-        <code>null</code> values as missing data, and will allow for gaps in
-        datasets.
     </p>
 </figure>
 
