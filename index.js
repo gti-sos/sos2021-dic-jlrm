@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require("path");
-var back = require("./src/back");
+var back = require("./src/back/v1");
 var bodyParser = require("body-parser");
 
 var app = express();

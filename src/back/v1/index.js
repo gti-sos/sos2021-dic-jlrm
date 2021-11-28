@@ -44,6 +44,20 @@ var deathStats = [
 
 db.insert(deathStats);
 
+//Using paperwork for JSON validation
+var paperwork = require("paperwork");
+
+//Death stat schema for validation
+var deathStatsSchema = {
+
+    "province": String,
+    "year": Number,
+    "tumor": Number,
+    "circulatory_system_disease": Number,
+    "respiratory_system_disease": Number
+};
+
+
 module.exports = (app) => {
 
     //Creacion de recursos
@@ -68,16 +82,46 @@ app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
  });
 
 //GET a un recurso
+   app.get(BASE_API_PATH+"/death-stats/:province/:year", function (req, res) {
+        db.find({ province: req.params.province, year: parseInt(req.params.year) }, function (err, resource) {
+            if (err) {
+                console.error(DATABASE_ERR_MSSG + err);
+                res.sendStatus(500);
 
+            } else {
+                if (resource.length != 0) {
+                    var resourceToSend = resource.map(function (d) {
+                        return {
+                            province: d.province,
+                            year: d.year,
+                            tumor: d.tumor,
+                            circulatory_system_disease: d.circulatory_system_disease,
+                            respiratory_system_disease: d.respiratory_system_disease
+                        }
+                    });
+
+                    if (resourceToSend.length == 1) {
+                        res.status(200).send(resourceToSend[0]);
+                    } else {
+                        res.status(200).send(resourceToSend);
+                    }
+
+                } else {
+                    res.sendStatus(404);
+                }
+            }
+        });
+
+    });
 
 
 //POST a la lista de recursos
-app.post(BASE_API_PATH+"/death-stats", (req,res)=>{
+app.post(BASE_API_PATH+"/death-stats", (req, res) =>{
     var newDeathStat = req.body;
     
     console.log(`new death stat to be added: <${JSON.stringify(newDeathStat,null,2)}>`);
 
-	db.find({name: newDeathStat.name}, (err,deathStatsInDB) => {
+	db.find({name: newDeathStat.name, year:newDeathStat.year}, (err,deathStatsInDB) => {
 		if(err){
 			console.error("ERROR accessing db in POST" + err);
 			res.sendStatus(500);
@@ -137,7 +181,39 @@ app.delete(BASE_API_PATH+"/death-stats", (req,res) =>{
 })
 
 //PUT a un recurso
+    app.put(BASE_API_PATH+"/death-stats/:province/:year", paperwork.accept(deathStatsSchema), function (req, res) {
 
+        var province = req.params.province;
+        var year = parseInt(req.params.year);
+        var deathStatToUpdate = req.body;
+
+        db.update(
+            {
+                province: province,
+                year: year
+            },
+            {
+                $set: {
+
+                    tumor: deathStatToUpdate.tumor,
+                    circulatory_system_disease: deathStatToUpdate.circulatory_system_disease,
+                    respiratory_system_disease: deathStatToUpdate.respiratory_system_disease
+                }
+            }
+            , {}, function (err, updateDeathStat) {
+                if (err) {
+                    console.error("ERROR updating death stat: " + err);
+                    res.sendStatus(500);
+                } else {
+                    if (updateDeathStat.length == 0) {
+                        res.sendStatus(404);
+                    } else {
+                        res.status(200).send("Death Stat Updated Successfully");
+                    }
+                }
+
+            });
+    });
 
 //PUT lista de recursos, not allowed
 app.put(BASE_API_PATH+"/death-stats", (req,res)=>{

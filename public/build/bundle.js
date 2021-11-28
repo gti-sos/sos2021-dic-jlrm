@@ -11687,7 +11687,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (72:1) <Alert color="secondary">
+    // (78:1) <Alert color="secondary">
     function create_default_slot_3$1(ctx) {
     	let t;
 
@@ -11707,14 +11707,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(72:1) <Alert color=\\\"secondary\\\">",
+    		source: "(78:1) <Alert color=\\\"secondary\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (96:20) <Button on:click={insertDeathStat}>
+    // (102:20) <Button on:click={insertDeathStat}>
     function create_default_slot_2$2(ctx) {
     	let t;
 
@@ -11734,14 +11734,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$2.name,
     		type: "slot",
-    		source: "(96:20) <Button on:click={insertDeathStat}>",
+    		source: "(102:20) <Button on:click={insertDeathStat}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:24) <Button on:click={deleteDeathStat(deathStat.province,deathStat.year)}>
+    // (111:24) <Button on:click={deleteDeathStat(deathStat.province,deathStat.year)}>
     function create_default_slot_1$2(ctx) {
     	let t;
 
@@ -11761,14 +11761,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$2.name,
     		type: "slot",
-    		source: "(105:24) <Button on:click={deleteDeathStat(deathStat.province,deathStat.year)}>",
+    		source: "(111:24) <Button on:click={deleteDeathStat(deathStat.province,deathStat.year)}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (98:12) {#each deathStats as deathStat}
+    // (104:12) {#each deathStats as deathStat}
     function create_each_block(ctx) {
     	let tr;
     	let td0;
@@ -11833,14 +11833,14 @@ var app = (function () {
     			create_component(button.$$.fragment);
     			t10 = space();
     			attr_dev(a, "href", a_href_value = "#/death-stats/" + /*deathStat*/ ctx[10].province + "/" + /*deathStat*/ ctx[10].year);
-    			add_location(a, file$6, 99, 24, 3351);
-    			add_location(td0, file$6, 99, 20, 3347);
-    			add_location(td1, file$6, 100, 20, 3463);
-    			add_location(td2, file$6, 101, 5, 3494);
-    			add_location(td3, file$6, 102, 5, 3526);
-    			add_location(td4, file$6, 103, 20, 3594);
-    			add_location(td5, file$6, 104, 20, 3662);
-    			add_location(tr, file$6, 98, 16, 3322);
+    			add_location(a, file$6, 105, 24, 3813);
+    			add_location(td0, file$6, 105, 20, 3809);
+    			add_location(td1, file$6, 106, 20, 3925);
+    			add_location(td2, file$6, 107, 5, 3956);
+    			add_location(td3, file$6, 108, 5, 3988);
+    			add_location(td4, file$6, 109, 20, 4056);
+    			add_location(td5, file$6, 110, 20, 4124);
+    			add_location(tr, file$6, 104, 16, 3784);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -11904,14 +11904,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(98:12) {#each deathStats as deathStat}",
+    		source: "(104:12) {#each deathStats as deathStat}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:4) <Table bordered>
+    // (84:4) <Table bordered>
     function create_default_slot$5(ctx) {
     	let thead;
     	let tr0;
@@ -12019,27 +12019,27 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$6, 80, 16, 2534);
-    			add_location(th1, file$6, 81, 16, 2569);
-    			add_location(th2, file$6, 82, 4, 2586);
-    			add_location(th3, file$6, 83, 16, 2617);
-    			add_location(th4, file$6, 84, 16, 2666);
-    			add_location(th5, file$6, 85, 16, 2715);
-    			add_location(tr0, file$6, 79, 12, 2513);
-    			add_location(thead, file$6, 78, 8, 2493);
-    			add_location(input0, file$6, 90, 20, 2819);
-    			add_location(td0, file$6, 90, 16, 2815);
-    			add_location(input1, file$6, 91, 20, 2889);
-    			add_location(td1, file$6, 91, 16, 2885);
-    			add_location(input2, file$6, 92, 8, 2943);
-    			add_location(td2, file$6, 92, 4, 2939);
-    			add_location(input3, file$6, 93, 20, 3010);
-    			add_location(td3, file$6, 93, 16, 3006);
-    			add_location(input4, file$6, 94, 20, 3098);
-    			add_location(td4, file$6, 94, 16, 3094);
-    			add_location(td5, file$6, 95, 16, 3182);
-    			add_location(tr1, file$6, 89, 12, 2794);
-    			add_location(tbody, file$6, 88, 8, 2774);
+    			add_location(th0, file$6, 86, 16, 2996);
+    			add_location(th1, file$6, 87, 16, 3031);
+    			add_location(th2, file$6, 88, 4, 3048);
+    			add_location(th3, file$6, 89, 16, 3079);
+    			add_location(th4, file$6, 90, 16, 3128);
+    			add_location(th5, file$6, 91, 16, 3177);
+    			add_location(tr0, file$6, 85, 12, 2975);
+    			add_location(thead, file$6, 84, 8, 2955);
+    			add_location(input0, file$6, 96, 20, 3281);
+    			add_location(td0, file$6, 96, 16, 3277);
+    			add_location(input1, file$6, 97, 20, 3351);
+    			add_location(td1, file$6, 97, 16, 3347);
+    			add_location(input2, file$6, 98, 8, 3405);
+    			add_location(td2, file$6, 98, 4, 3401);
+    			add_location(input3, file$6, 99, 20, 3472);
+    			add_location(td3, file$6, 99, 16, 3468);
+    			add_location(input4, file$6, 100, 20, 3560);
+    			add_location(td4, file$6, 100, 16, 3556);
+    			add_location(td5, file$6, 101, 16, 3644);
+    			add_location(tr1, file$6, 95, 12, 3256);
+    			add_location(tbody, file$6, 94, 8, 3236);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -12192,7 +12192,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$5.name,
     		type: "slot",
-    		source: "(78:4) <Table bordered>",
+    		source: "(84:4) <Table bordered>",
     		ctx
     	});
 
@@ -12247,12 +12247,12 @@ var app = (function () {
     			br2 = element("br");
     			t4 = space();
     			create_component(table.$$.fragment);
-    			add_location(h1, file$6, 69, 10, 2022);
-    			add_location(center, file$6, 69, 2, 2014);
-    			add_location(br0, file$6, 70, 0, 2093);
-    			add_location(br1, file$6, 76, 2, 2455);
-    			add_location(br2, file$6, 76, 6, 2459);
-    			add_location(main, file$6, 68, 0, 2005);
+    			add_location(h1, file$6, 75, 10, 2484);
+    			add_location(center, file$6, 75, 2, 2476);
+    			add_location(br0, file$6, 76, 0, 2555);
+    			add_location(br1, file$6, 82, 2, 2917);
+    			add_location(br2, file$6, 82, 6, 2921);
+    			add_location(main, file$6, 74, 0, 2467);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12351,7 +12351,13 @@ var app = (function () {
 
     		await fetch(BASE_API_PATH$2 + "/death-stats", {
     			method: "POST",
-    			body: JSON.stringify(newDeathStat),
+    			body: JSON.stringify({
+    				province: newDeathStat.province,
+    				year: parseInt(newDeathStat.year),
+    				tumor: parseInt(newDeathStat.tumor),
+    				circulatory_system_disease: parseInt(newDeathStat.circulatory_system_disease),
+    				respiratory_system_disease: parseInt(newDeathStat.respiratory_system_disease)
+    			}),
     			headers: { "Content-Type": "application/json" }
     		}).then(res => {
     			getDeathStats();
@@ -12452,7 +12458,7 @@ var app = (function () {
     const { console: console_1$2 } = globals;
     const file$5 = "src/front/DeathStatsGUI/DeathStatEdit.svelte";
 
-    // (92:25) <Button outline color="primary" on:click={updateDeathStat}>
+    // (77:25) <Button outline color="primary" on:click={updateDeathStat()}>
     function create_default_slot_2$1(ctx) {
     	let t;
 
@@ -12472,14 +12478,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(92:25) <Button outline color=\\\"primary\\\" on:click={updateDeathStat}>",
+    		source: "(77:25) <Button outline color=\\\"primary\\\" on:click={updateDeathStat()}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:8) <Table bordered>
+    // (59:8) <Table bordered>
     function create_default_slot_1$1(ctx) {
     	let thead;
     	let tr0;
@@ -12501,17 +12507,17 @@ var app = (function () {
     	let t12;
     	let t13;
     	let td1;
-    	let input0;
     	let t14;
-    	let td2;
-    	let input1;
     	let t15;
-    	let td3;
-    	let input2;
+    	let td2;
+    	let input0;
     	let t16;
-    	let td4;
-    	let input3;
+    	let td3;
+    	let input1;
     	let t17;
+    	let td4;
+    	let input2;
+    	let t18;
     	let td5;
     	let button;
     	let current;
@@ -12528,7 +12534,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	button.$on("click", /*updateDeathStat*/ ctx[7]);
+    	button.$on("click", /*updateDeathStat*/ ctx[7]());
 
     	const block = {
     		c: function create() {
@@ -12558,39 +12564,38 @@ var app = (function () {
     			t12 = text(/*updatedProvince*/ ctx[1]);
     			t13 = space();
     			td1 = element("td");
-    			input0 = element("input");
-    			t14 = space();
-    			td2 = element("td");
-    			input1 = element("input");
+    			t14 = text(/*updatedYear*/ ctx[2]);
     			t15 = space();
-    			td3 = element("td");
-    			input2 = element("input");
+    			td2 = element("td");
+    			input0 = element("input");
     			t16 = space();
-    			td4 = element("td");
-    			input3 = element("input");
+    			td3 = element("td");
+    			input1 = element("input");
     			t17 = space();
+    			td4 = element("td");
+    			input2 = element("input");
+    			t18 = space();
     			td5 = element("td");
     			create_component(button.$$.fragment);
-    			add_location(th0, file$5, 76, 20, 2157);
-    			add_location(th1, file$5, 77, 20, 2196);
-    			add_location(th2, file$5, 78, 20, 2229);
-    			add_location(th3, file$5, 79, 5, 2249);
-    			add_location(th4, file$5, 80, 20, 2314);
-    			add_location(th5, file$5, 81, 20, 2379);
-    			add_location(tr0, file$5, 75, 16, 2132);
-    			add_location(thead, file$5, 74, 12, 2108);
-    			add_location(td0, file$5, 86, 20, 2501);
-    			add_location(input0, file$5, 87, 24, 2552);
-    			add_location(td1, file$5, 87, 20, 2548);
-    			add_location(input1, file$5, 88, 9, 2601);
-    			add_location(td2, file$5, 88, 5, 2597);
-    			add_location(input2, file$5, 89, 24, 2666);
-    			add_location(td3, file$5, 89, 20, 2662);
-    			add_location(input3, file$5, 90, 24, 2737);
-    			add_location(td4, file$5, 90, 20, 2733);
-    			add_location(td5, file$5, 91, 20, 2804);
-    			add_location(tr1, file$5, 85, 16, 2476);
-    			add_location(tbody, file$5, 84, 12, 2452);
+    			add_location(th0, file$5, 61, 20, 2152);
+    			add_location(th1, file$5, 62, 20, 2191);
+    			add_location(th2, file$5, 63, 20, 2224);
+    			add_location(th3, file$5, 64, 5, 2244);
+    			add_location(th4, file$5, 65, 20, 2309);
+    			add_location(th5, file$5, 66, 20, 2374);
+    			add_location(tr0, file$5, 60, 16, 2127);
+    			add_location(thead, file$5, 59, 12, 2103);
+    			add_location(td0, file$5, 71, 20, 2496);
+    			add_location(td1, file$5, 72, 20, 2543);
+    			add_location(input0, file$5, 73, 9, 2575);
+    			add_location(td2, file$5, 73, 5, 2571);
+    			add_location(input1, file$5, 74, 24, 2640);
+    			add_location(td3, file$5, 74, 20, 2636);
+    			add_location(input2, file$5, 75, 24, 2711);
+    			add_location(td4, file$5, 75, 20, 2707);
+    			add_location(td5, file$5, 76, 20, 2778);
+    			add_location(tr1, file$5, 70, 16, 2471);
+    			add_location(tbody, file$5, 69, 12, 2447);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -12613,21 +12618,20 @@ var app = (function () {
     			append_dev(td0, t12);
     			append_dev(tr1, t13);
     			append_dev(tr1, td1);
-    			append_dev(td1, input0);
-    			set_input_value(input0, /*updatedYear*/ ctx[2]);
-    			append_dev(tr1, t14);
-    			append_dev(tr1, td2);
-    			append_dev(td2, input1);
-    			set_input_value(input1, /*updatedTumor*/ ctx[3]);
+    			append_dev(td1, t14);
     			append_dev(tr1, t15);
-    			append_dev(tr1, td3);
-    			append_dev(td3, input2);
-    			set_input_value(input2, /*updatedRespiratory*/ ctx[5]);
+    			append_dev(tr1, td2);
+    			append_dev(td2, input0);
+    			set_input_value(input0, /*updatedTumor*/ ctx[3]);
     			append_dev(tr1, t16);
-    			append_dev(tr1, td4);
-    			append_dev(td4, input3);
-    			set_input_value(input3, /*updatedCirculatory*/ ctx[4]);
+    			append_dev(tr1, td3);
+    			append_dev(td3, input1);
+    			set_input_value(input1, /*updatedRespiratory*/ ctx[5]);
     			append_dev(tr1, t17);
+    			append_dev(tr1, td4);
+    			append_dev(td4, input2);
+    			set_input_value(input2, /*updatedCirculatory*/ ctx[4]);
+    			append_dev(tr1, t18);
     			append_dev(tr1, td5);
     			mount_component(button, td5, null);
     			current = true;
@@ -12636,8 +12640,7 @@ var app = (function () {
     				dispose = [
     					listen_dev(input0, "input", /*input0_input_handler*/ ctx[8]),
     					listen_dev(input1, "input", /*input1_input_handler*/ ctx[9]),
-    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[10]),
-    					listen_dev(input3, "input", /*input3_input_handler*/ ctx[11])
+    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[10])
     				];
 
     				mounted = true;
@@ -12645,26 +12648,23 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (!current || dirty & /*updatedProvince*/ 2) set_data_dev(t12, /*updatedProvince*/ ctx[1]);
+    			if (!current || dirty & /*updatedYear*/ 4) set_data_dev(t14, /*updatedYear*/ ctx[2]);
 
-    			if (dirty & /*updatedYear*/ 4 && input0.value !== /*updatedYear*/ ctx[2]) {
-    				set_input_value(input0, /*updatedYear*/ ctx[2]);
+    			if (dirty & /*updatedTumor*/ 8 && input0.value !== /*updatedTumor*/ ctx[3]) {
+    				set_input_value(input0, /*updatedTumor*/ ctx[3]);
     			}
 
-    			if (dirty & /*updatedTumor*/ 8 && input1.value !== /*updatedTumor*/ ctx[3]) {
-    				set_input_value(input1, /*updatedTumor*/ ctx[3]);
+    			if (dirty & /*updatedRespiratory*/ 32 && input1.value !== /*updatedRespiratory*/ ctx[5]) {
+    				set_input_value(input1, /*updatedRespiratory*/ ctx[5]);
     			}
 
-    			if (dirty & /*updatedRespiratory*/ 32 && input2.value !== /*updatedRespiratory*/ ctx[5]) {
-    				set_input_value(input2, /*updatedRespiratory*/ ctx[5]);
-    			}
-
-    			if (dirty & /*updatedCirculatory*/ 16 && input3.value !== /*updatedCirculatory*/ ctx[4]) {
-    				set_input_value(input3, /*updatedCirculatory*/ ctx[4]);
+    			if (dirty & /*updatedCirculatory*/ 16 && input2.value !== /*updatedCirculatory*/ ctx[4]) {
+    				set_input_value(input2, /*updatedCirculatory*/ ctx[4]);
     			}
 
     			const button_changes = {};
 
-    			if (dirty & /*$$scope*/ 16384) {
+    			if (dirty & /*$$scope*/ 8192) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -12693,14 +12693,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(74:8) <Table bordered>",
+    		source: "(59:8) <Table bordered>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (96:4) {#if errorMsg}
+    // (81:4) {#if errorMsg}
     function create_if_block(ctx) {
     	let p;
     	let t0;
@@ -12712,7 +12712,7 @@ var app = (function () {
     			t0 = text("ERROR: ");
     			t1 = text(/*errorMsg*/ ctx[6]);
     			set_style(p, "color", "red");
-    			add_location(p, file$5, 96, 8, 2977);
+    			add_location(p, file$5, 81, 8, 2953);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -12731,20 +12731,20 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(96:4) {#if errorMsg}",
+    		source: "(81:4) {#if errorMsg}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:4) <Button outline color="secondary" on:click="{pop}">
+    // (84:4) <Button outline color="secondary" on:click="{pop}">
     function create_default_slot$4(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("Back");
+    			t = text("Atras");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -12758,7 +12758,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$4.name,
     		type: "slot",
-    		source: "(99:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
+    		source: "(84:4) <Button outline color=\\\"secondary\\\" on:click=\\\"{pop}\\\">",
     		ctx
     	});
 
@@ -12822,10 +12822,10 @@ var app = (function () {
     			if (if_block) if_block.c();
     			t6 = space();
     			create_component(button.$$.fragment);
-    			add_location(strong0, file$5, 72, 17, 1990);
-    			add_location(strong1, file$5, 72, 62, 2035);
-    			add_location(h3, file$5, 72, 4, 1977);
-    			add_location(main, file$5, 71, 0, 1966);
+    			add_location(strong0, file$5, 57, 17, 1985);
+    			add_location(strong1, file$5, 57, 62, 2030);
+    			add_location(h3, file$5, 57, 4, 1972);
+    			add_location(main, file$5, 56, 0, 1961);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12852,7 +12852,7 @@ var app = (function () {
     			if ((!current || dirty & /*params*/ 1) && t3_value !== (t3_value = /*params*/ ctx[0].year + "")) set_data_dev(t3, t3_value);
     			const table_changes = {};
 
-    			if (dirty & /*$$scope, updatedCirculatory, updatedRespiratory, updatedTumor, updatedYear, updatedProvince*/ 16446) {
+    			if (dirty & /*$$scope, updatedCirculatory, updatedRespiratory, updatedTumor, updatedYear, updatedProvince*/ 8254) {
     				table_changes.$$scope = { dirty, ctx };
     			}
 
@@ -12873,7 +12873,7 @@ var app = (function () {
 
     			const button_changes = {};
 
-    			if (dirty & /*$$scope*/ 16384) {
+    			if (dirty & /*$$scope*/ 8192) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -12932,9 +12932,9 @@ var app = (function () {
     			deathStat = json;
     			$$invalidate(1, updatedProvince = deathStat.province);
     			$$invalidate(2, updatedYear = deathStat.year);
-    			$$invalidate(3, updatedTumor = deathStat.tumor);
-    			$$invalidate(4, updatedCirculatory = deathStat.circulatory_system_disease);
-    			$$invalidate(5, updatedRespiratory = deathStat.respiratory_system_disease);
+    			$$invalidate(3, updatedTumor = deathStat["tumor"]);
+    			$$invalidate(4, updatedCirculatory = deathStat["circulatory_system_disease"]);
+    			$$invalidate(5, updatedRespiratory = deathStat["respiratory_system_disease"]);
     			console.log("Received death stat.");
     		} else {
     			$$invalidate(6, errorMsg = res.status + ": " + res.statusText);
@@ -12949,7 +12949,7 @@ var app = (function () {
     			method: "PUT",
     			body: JSON.stringify({
     				province: params.province,
-    				year: updatedYear,
+    				year: params.year,
     				tumor: updatedTumor,
     				respiratory_system_disease: updatedRespiratory,
     				circulatory_system_disease: updatedCirculatory
@@ -12967,21 +12967,16 @@ var app = (function () {
     	});
 
     	function input0_input_handler() {
-    		updatedYear = this.value;
-    		$$invalidate(2, updatedYear);
-    	}
-
-    	function input1_input_handler() {
     		updatedTumor = this.value;
     		$$invalidate(3, updatedTumor);
     	}
 
-    	function input2_input_handler() {
+    	function input1_input_handler() {
     		updatedRespiratory = this.value;
     		$$invalidate(5, updatedRespiratory);
     	}
 
-    	function input3_input_handler() {
+    	function input2_input_handler() {
     		updatedCirculatory = this.value;
     		$$invalidate(4, updatedCirculatory);
     	}
@@ -13033,8 +13028,7 @@ var app = (function () {
     		updateDeathStat,
     		input0_input_handler,
     		input1_input_handler,
-    		input2_input_handler,
-    		input3_input_handler
+    		input2_input_handler
     	];
     }
 

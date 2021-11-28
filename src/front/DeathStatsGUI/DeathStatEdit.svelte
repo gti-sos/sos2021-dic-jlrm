@@ -2,15 +2,11 @@
     import {
         onMount
     } from "svelte";
-
     import {
         pop
     } from "svelte-spa-router";
-
-
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
-
     export let params = {};
     let deathStat = {};
     let updatedProvince = "XXXX";
@@ -18,42 +14,34 @@
 	let updatedTumor = 12345;
     let updatedCirculatory = 12345;
 	let updatedRespiratory = 12345;
-
     let errorMsg = "";
-
     onMount(getDeathStat);
-
     async function getDeathStat() {
-
         console.log("Fetching death stact...");
         const res = await fetch("/api/v1/death-stats/" + params.province + "/" + params.year);
-
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
             deathStat = json;
             updatedProvince = deathStat.province;
             updatedYear = deathStat.year;
-			updatedTumor = deathStat.tumor;
-            updatedCirculatory = deathStat.circulatory_system_disease;
-            updatedRespiratory = deathStat.respiratory_system_disease;
+			updatedTumor = deathStat["tumor"];
+            updatedCirculatory = deathStat["circulatory_system_disease"];
+            updatedRespiratory = deathStat["respiratory_system_disease"];
             console.log("Received death stat.");
         } else {
             errorMsg = res.status + ": " + res.statusText;
             console.log("ERROR!" + errorMsg);
         }
     }
-
-
+	
     async function updateDeathStat() {
-
         console.log("Updating death stat..." + JSON.stringify(params.province));
-
         const res = await fetch("/api/v1/death-stats/" + params.province + "/" + params.year, {
             method: "PUT",
             body: JSON.stringify({
                 province: params.province,
-                year: updatedYear,
+                year: params.year,
 				tumor: updatedTumor,
                 respiratory_system_disease: updatedRespiratory,
                 circulatory_system_disease: updatedCirculatory
@@ -64,9 +52,6 @@
         }).then(function (res) {
             getDeathStat();
         });
-
-
-
     }
 </script>
 <main>
@@ -85,16 +70,16 @@
             <tbody>
                 <tr>
                     <td>{updatedProvince}</td>
-                    <td><input bind:value="{updatedYear}"></td>
+                    <td>{updatedYear}</td>
 					<td><input bind:value="{updatedTumor}"></td>
                     <td><input bind:value="{updatedRespiratory}"></td>
                     <td><input bind:value="{updatedCirculatory}"></td>
-                    <td> <Button outline color="primary" on:click={updateDeathStat}>Actualizar</Button> </td>
+                    <td> <Button outline color="primary" on:click={updateDeathStat()}>Actualizar</Button> </td>
                 </tr>
         </tbody>
         </Table>
     {#if errorMsg}
         <p style="color: red">ERROR: {errorMsg}</p>
     {/if}
-    <Button outline color="secondary" on:click="{pop}">Back</Button>
+    <Button outline color="secondary" on:click="{pop}">Atras</Button>
 </main>

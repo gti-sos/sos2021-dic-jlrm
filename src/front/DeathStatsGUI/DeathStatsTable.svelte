@@ -38,8 +38,14 @@
 
         const res = await fetch(BASE_API_PATH+"/death-stats",
                             {
-                                method: "POST",
-                                body: JSON.stringify(newDeathStat),
+                            	method: "POST",
+                                body: JSON.stringify({
+                                    province: newDeathStat.province,
+                                    year: parseInt(newDeathStat.year),
+                                    tumor: parseInt(newDeathStat.tumor),
+                                    circulatory_system_disease: parseInt(newDeathStat.circulatory_system_disease),
+                                    respiratory_system_disease: parseInt(newDeathStat.respiratory_system_disease)
+                                }),
                                 headers:{
                                     "Content-Type": "application/json"
                                 }
