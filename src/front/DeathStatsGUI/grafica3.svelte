@@ -97,10 +97,10 @@
         <NavLink href="#/integrations">Integraciones</NavLink>
         </NavItem>
         <NavItem>
-            <NavLink href="https://sos2021-sep-mcc.herokuapp.com/#/psychology-stats">Cargar Datos Iniciales Míos</NavLink>
+            <NavLink href="https://sos2021-dic-jlrm.herokuapp.com/#/death-stats">Cargar Datos Iniciales Míos</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="https://sos2021-27.herokuapp.com/#/azar-games-and-bet-activities">Cargar Datos Iniciales Compañero</NavLink>
+                <NavLink href="https://sos2021-sep-arc.herokuapp.com/#/schizophrenia-stats">Cargar Datos Iniciales Compañero</NavLink>
                 </NavItem>
         </Nav> 
     
