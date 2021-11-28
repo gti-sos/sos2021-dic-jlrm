@@ -39,52 +39,62 @@
 async function loadGraph(){
    await getDatos();
    
-        var total = [] ;
+        var ninos = [] ;
+		var ninas = [] ;
         var country = [] ;
-        datos.forEach((anxiety) => {
-            total.push(anxiety.percent_children_employment_t);
-            country.push(anxiety.country);
+        datos.forEach((ninos) => {
+            ninos.push(ninos.percent_children_employment_m);
+            country.push(ninos.country);
+			ninas.push(ninos.percent_children_employment_f)
         });
 		
 		
 // Set up the chart
 Highcharts.chart('container', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+        type: 'area'
     },
     title: {
-        text: 'Porcentaje de ninios empleados'
+        text: 'Fruit consumption *'
     },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    subtitle: {
+        text: '* Jane\'s banana consumption is unknown',
+        align: 'right',
+        verticalAlign: 'bottom'
     },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 100,
+        y: 70,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+    },
+    xAxis: {
+        categories: country
+    },
+    yAxis: {
+        title: {
+            text: 'Y-Axis'
         }
     },
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
+        area: {
+            fillOpacity: 0.5
         }
     },
+    credits: {
+        enabled: false
+    },
     series: [{
-        name: 'Paises',
-        colorByPoint: true,
-		 data: [
-        	{
-                name: country,
-                y: parseInt(total),
-            }
-        	]
+        name: 'Ninos',
+        data: ninos
+    }, {
+        name: 'Ninas',
+        data: ninos
     }]
 });
 
@@ -125,9 +135,13 @@ Highcharts.chart('container', {
 </main>
 
 <style>
+#container {
+    height: 400px;
+}
+
 .highcharts-figure,
 .highcharts-data-table table {
-    min-width: 320px;
+    min-width: 350px;
     max-width: 800px;
     margin: 1em auto;
 }
@@ -168,7 +182,4 @@ Highcharts.chart('container', {
     background: #f1f7ff;
 }
 
-input[type="number"] {
-    min-width: 50px;
-}
 </style>
