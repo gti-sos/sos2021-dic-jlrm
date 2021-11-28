@@ -43,7 +43,7 @@ async function loadGraph(){
         var phase = [] ;
         datos.forEach((covid) => {
             value.push(covid.candidates);
-            date.push(covid.phase);
+            phase.push(covid.phase);
         });
 		
 		
@@ -59,7 +59,7 @@ Highcharts.chart('container', {
         text: '-------'
     },
     xAxis: {
-        categories: date,
+        categories: phase,
         crosshair: true
     },
     yAxis: {
