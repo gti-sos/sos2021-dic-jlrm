@@ -42,9 +42,8 @@ async function loadGraph(){
         var plata = [] ;
         var anio = [] ;
         datos.forEach((olimpic) => {
-           
-            total.push(olimpic.anxiety_men);
-            anyo.push(olimpic.year);
+            plata.push(olimpic.anxiety_men);
+            anio.push(olimpic.year);
         });
 		
 		
