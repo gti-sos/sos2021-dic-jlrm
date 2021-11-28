@@ -1,5 +1,5 @@
 <script>
-    import { Nav, NavItem, NavLink } from "sveltestrap";
+    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
     const BASE_API_OLIMPIC = "https://sos2021-sep-cga.herokuapp.com/api/v2/olimpic-stats"
@@ -114,7 +114,19 @@ showValues();
 	tras año, en este caso intenta asociar las muertes producidas por enfermedades, como es el caso de muertes por 
 	tumor, enfermedades del sistema respiratorio y enfermedades del sistema circulatorio.
   </Alert>
-  <br><br>
+  <br>
+  <Nav>
+    <NavItem>
+    <NavLink href="/">Página Principal</NavLink>
+    </NavItem>
+    <NavItem>
+    <NavLink href="#/integrations">Integraciones</NavLink>
+    </NavItem>
+    <NavItem>
+        <NavLink href="https://sos2021-sep-cga.herokuapp.com/#/olimpic-stats">Cargar Datos Iniciales</NavLink>
+        </NavItem>
+    </Nav>      
+  <br>
    <figure class="highcharts-figure">
     <div id="container"></div>
     <div id="sliders">
