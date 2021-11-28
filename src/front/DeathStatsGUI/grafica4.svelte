@@ -2,11 +2,11 @@
     import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_OLIMPIC = "https://sos2021-sep-jpcc.herokuapp.com/api/v2/anxiety_stats"
+    const BASE_API_ANXIETY = "https://sos2021-sep-jpcc.herokuapp.com/api/v2/anxiety_stats"
    
     async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_OLIMPIC).then(
+        const res = await fetch(BASE_API_ANXIETY).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -24,7 +24,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_OLIMPIC);
+        const res = await fetch(BASE_API_ANXIETY);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -40,10 +40,10 @@ async function loadGraph(){
    await getDatos();
    
         var plata = [] ;
-        var anio = [] ;
-        datos.forEach((olimpic) => {
-            plata.push(olimpic.anxiety_men);
-            anio.push(olimpic.year);
+        var country = [] ;
+        datos.forEach((anxiety) => {
+            plata.push(anxiety.anxiety_men);
+            country.push(anxiety.country);
         });
 		
 		
@@ -61,13 +61,13 @@ const chart = new Highcharts.Chart({
         }
     },
     title: {
-        text: 'Chart rotation demo'
+        text: 'Grafico ansiedad en hombre por comunidad'
     },
     subtitle: {
-        text: 'Test options by dragging the sliders below'
+        text: '---------------'
     },
 	 xAxis: {
-        categories: anio,
+        categories: country,
     },
     plotOptions: {
         column: {
@@ -106,13 +106,8 @@ showValues();
 </svelte:head>
 
 <main>
-  <center><h1>Estadísticas de muerte por enfermedades en Andalucia</h1></center>
+  <center><h1>Estadísticas de ansiedad en hombres por año</h1></center>
 <br>
- <Alert color="secondary">
-    La siguiente tabla muestra información sobre las muertes que se han producido en las provincias de Andalucia año
-	tras año, en este caso intenta asociar las muertes producidas por enfermedades, como es el caso de muertes por 
-	tumor, enfermedades del sistema respiratorio y enfermedades del sistema circulatorio.
-  </Alert>
   <br>
   <Nav>
     <NavItem>
@@ -122,7 +117,7 @@ showValues();
     <NavLink href="#/integrations">Integraciones</NavLink>
     </NavItem>
     <NavItem>
-        <NavLink href="https://sos2021-sep-cga.herokuapp.com/#/olimpic-stats">Cargar Datos Iniciales</NavLink>
+        <NavLink href="https://sos2021-sep-jpcc.herokuapp.com/#/anxiety_stats">Cargar Datos Iniciales</NavLink>
         </NavItem>
     </Nav>      
   <br>
@@ -131,15 +126,15 @@ showValues();
     <div id="sliders">
         <table>
             <tr>
-                <td><label for="alpha">Alpha Angle</label></td>
+                <td><label for="alpha">Angulo alfa</label></td>
                 <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
             </tr>
             <tr>
-                <td><label for="beta">Beta Angle</label></td>
+                <td><label for="beta">Angulo beta</label></td>
                 <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
             </tr>
             <tr>
-                <td><label for="depth">Depth</label></td>
+                <td><label for="depth">Profundidad</label></td>
                 <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
             </tr>
         </table>
