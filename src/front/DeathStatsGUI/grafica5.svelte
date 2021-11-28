@@ -2,7 +2,7 @@
     import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_CHINA = "http://api.worldbank.org/v2/countries/CHN/indicators/SP.POP.TOTL?per_page=5000&format=json"
+    const BASE_API_CHINA = "https://api.worldbank.org/v2/countries/CHN/indicators/SP.POP.TOTL?per_page=5000&format=json"
    
     async function loadRentals() {
         console.log("Loading data...");
