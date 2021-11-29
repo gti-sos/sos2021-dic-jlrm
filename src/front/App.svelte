@@ -12,6 +12,7 @@
 	import Graph6 from './DeathStatsGUI/grafica6.svelte';
 	import NotFound from './NotFound.svelte';
 	import Info from './Info.svelte';
+	import Integrations from './NotFound.svelte';
 
 
 	const routes = {
@@ -25,6 +26,7 @@
 		"/graph6": Graph6,
 		"/death-stats/:province/:year": DeathStatsEdit,
 		"/info": Info,
+		"/integrations": Integrations,
 		"*": NotFound
 	};
 	
