@@ -261,7 +261,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody style="background:white;color:black;text-align:center;">
+            <tbody style="color:white;text-align:center;">
                 <tr>
                     <td>
                         <Input
