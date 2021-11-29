@@ -38,7 +38,6 @@
     async function loadGraph(){
       await getDatos();
 
-	  let data_x = Object.values(datos["coins"]);
          var uno = [];
       var dos = [] ;
       var tres = [] ;
