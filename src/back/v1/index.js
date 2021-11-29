@@ -83,7 +83,7 @@ var deathStatsSchema = {
 };
 	
     //Creacion de recursos
-app.get(BASE_API_PATH+"/death-stats/loadInitialData", (req,res) =>{
+app.get(BASE_API_PATH_v1+"/death-stats/loadInitialData", (req,res) =>{
 	res.send(JSON.stringify(deathStats,null,2));
 });
 	
@@ -104,7 +104,7 @@ app.get(BASE_API_PATH+"/death-stats/loadInitialData", (req,res) =>{
         });
 
 //GET a la lista de recursos
-app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
+app.get(BASE_API_PATH_v1+"/death-stats", (req,res)=>{
 	
 	db.find({}, (err,deathStatsInDB) => {
 		if(err){
@@ -120,7 +120,7 @@ app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
  });
 
 //GET a un recurso
-   app.get(BASE_API_PATH+"/death-stats/:province/:year", function (req, res) {
+   app.get(BASE_API_PATH_v1+"/death-stats/:province/:year", function (req, res) {
         db.find({ province: req.params.province, year: parseInt(req.params.year) }, function (err, resource) {
             if (err) {
                 console.error(DATABASE_ERR_MSSG + err);
@@ -154,7 +154,7 @@ app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
 
 
 //POST a la lista de recursos
-app.post(BASE_API_PATH+"/death-stats", (req, res) =>{
+app.post(BASE_API_PATH_v1+"/death-stats", (req, res) =>{
     var newDeathStat = req.body;
     
     console.log(`new death stat to be added: <${JSON.stringify(newDeathStat,null,2)}>`);
@@ -179,13 +179,13 @@ app.post(BASE_API_PATH+"/death-stats", (req, res) =>{
 	
 
 //POST a un recurso, not allowed
-app.post(BASE_API_PATH+"/death-stats", (req,res)=>{
+app.post(BASE_API_PATH_v1+"/death-stats", (req,res)=>{
     res.status(405).send("POST method not allowed");
 });
 
 //DELETE a un recursos
 
-app.delete(BASE_API_PATH+"/death-stats/:province/:year", (req,res) =>{
+app.delete(BASE_API_PATH_v1+"/death-stats/:province/:year", (req,res) =>{
 	var provinceToBeDeleted = req.params.province;
 	var yearToBeDeleted = req.params.year;
 	db.remove({province:String(provinceToBeDeleted), year:parseInt(yearToBeDeleted)},{multi: true},(err,numDeathStatRemoved) => {
@@ -203,7 +203,7 @@ app.delete(BASE_API_PATH+"/death-stats/:province/:year", (req,res) =>{
 })
 //DELETE a la lista de recursos
 
-app.delete(BASE_API_PATH+"/death-stats", (req,res) =>{
+app.delete(BASE_API_PATH_v1+"/death-stats", (req,res) =>{
 	db.remove({},{multi: true},(err,numDeathStatsRemoved) => {
 		if(err){
 			console.error("ERROR deleting db deathStats in DELETE: " + err);
@@ -219,7 +219,7 @@ app.delete(BASE_API_PATH+"/death-stats", (req,res) =>{
 })
 
 //PUT a un recurso
-    app.put(BASE_API_PATH+"/death-stats/:province/:year", paperwork.accept(deathStatsSchema), function (req, res) {
+    app.put(BASE_API_PATH_v1+"/death-stats/:province/:year", paperwork.accept(deathStatsSchema), function (req, res) {
 
         var province = req.params.province;
         var year = parseInt(req.params.year);
@@ -254,7 +254,7 @@ app.delete(BASE_API_PATH+"/death-stats", (req,res) =>{
     });
 
 //PUT lista de recursos, not allowed
-app.put(BASE_API_PATH+"/death-stats", (req,res)=>{
+app.put(BASE_API_PATH_v1+"/death-stats", (req,res)=>{
     res.status(405).send("PUT method not allowed");
 });
 
