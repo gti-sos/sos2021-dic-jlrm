@@ -3,10 +3,9 @@
     var errorMsg = "";
     var datos = [];
     const BASE_API_COIN = "https://api.coinlore.net/api/tickers/?start=20&limit=10"
-    //INTEGRACION API INTERNA
-    async function loadChildren() {
+     async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_COIN).then(
+        const res = await fetch(BASE_API_CRYPTO).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -23,8 +22,8 @@
     
       async function getDatos() {
         console.log("Fetching data...");
-        await loadChildren();
-        const res = await fetch(BASE_API_COIN);
+        await loadRentals();
+        const res = await fetch(BASE_API_CRYPTO);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -35,6 +34,7 @@
           console.log("ERROR!" + errorMsg);
         }
       }
+	  
       async function loadChart(){
         await getDatos();
    		let data_x = Object.values(datos["data"]);
@@ -111,7 +111,7 @@
   <br>
   <Nav>
     <NavItem>
-    <NavLink href="/">Página Principal</NavLink>
+    <NavLink href="/">Pagina Principal</NavLink>
     </NavItem>
     <NavItem>
     <NavLink href="#/integrations">Integraciones</NavLink>
@@ -123,22 +123,8 @@
   <br>
    <figure class="highcharts-figure">
     <div id="container"></div>
-    <div id="sliders">
-        <table>
-            <tr>
-                <td><label for="alpha">Angulo alfa</label></td>
-                <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
-            </tr>
-            <tr>
-                <td><label for="beta">Angulo beta</label></td>
-                <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
-            </tr>
-            <tr>
-                <td><label for="depth">Profundidad</label></td>
-                <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
-            </tr>
-        </table>
-    </div>
+    <p class="highcharts-description">
+    </p>
 </figure>
 
 </main>
