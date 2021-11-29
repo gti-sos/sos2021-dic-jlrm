@@ -2,7 +2,7 @@
   import { Nav, NavItem, NavLink } from "sveltestrap";
   var errorMsg = "";
   var datos = [];
-  const BASE_API_RENTALS = "https://sos2021-07.herokuapp.com/api/v1/rentals"
+  const BASE_API_RENTALS = "https://api.coinlore.net/api/tickers/?start=20&limit=10"
  
   async function loadRentals() {
       console.log("Loading data...");
@@ -37,14 +37,17 @@
     }
     async function loadGraph(){
       await getDatos();
-      var renta = [];
+
+	  let data_x = Object.values(datos["data"]);
+         var renta = [];
       var metros = [] ;
       var anyo = [] ;
-      datos.forEach((dato_rentals) => {
-          renta.push(dato_rentals.rent);
-          metros.push(dato_rentals.meter);
-          anyo.push(dato_rentals.year);
-      });
+        data_x.forEach((x) => {
+            renta.push(x["csupply"]);
+            metros.push(x["tsupply"]);
+			anyo.push(x["csupply"]);
+        });
+		
       console.log(metros);
       console.log(anyo);
       console.log(renta);
