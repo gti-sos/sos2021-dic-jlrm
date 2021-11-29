@@ -65,9 +65,9 @@ Highcharts.chart('container', {
         type: 'pie',
         allowPointSelect: true,
         keys: ['name', 'y', 'selected', 'sliced'],
-        data: [
-           nombre, volumen
-        ],
+        data: {
+		nombre, volumen
+		},
         showInLegend: true
     }]
 });
