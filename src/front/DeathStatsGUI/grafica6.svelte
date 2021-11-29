@@ -40,9 +40,9 @@
    		let data_x = Object.values(datos["data"]);
         var price_usd = [] ;
         var price_btc = [] ;
-        data_c.forEach((x) => {
-            volumen.push(x["price_usd"]);
-            nombre.push(x["price_btc"]);
+        data_x.forEach((x) => {
+            price_usd.push(x["price_usd"]);
+            price_btc.push(x["price_btc"]);
         });
         
         Highcharts.chart('container', {
