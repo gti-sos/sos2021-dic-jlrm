@@ -10,6 +10,7 @@
 
 <br>
 <ul>
+  <li><b>Desarrollador: </b> <a href="https://github.com/celu">Jose Luis Ruiz Monge</a></li>
   <li><b>Descripción del proyecto: </b> El proyecto se basa en analizar las causas de muerte por enfermedades en Andalucia a nivel provincial en el periodo de 2005 y 2018</li>
   <li><b>Repositorio: </b> <a href="https://github.com/gti-sos/sos2021-dic-jlrm">/gti-sos/sos2021-dic-jlrm</a></li>
   <li><b>URL: </b> <a href="https://sos2021-dic-jlrm.herokuapp.com">https://sos2021-dic-jlrm.herokuapp.com</a></li>

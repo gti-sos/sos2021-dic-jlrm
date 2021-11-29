@@ -38,10 +38,12 @@
 
 async function loadGraph(){
    await getDatos();
-   
+   	    let json = await res.json();
+   		let data_us = json;
+   		let data_us = Object.values(data_us["data"]);
         var plata = [] ;
         var country = [] ;
-        datos.forEach((anxiety) => {
+        data_us.forEach((anxiety) => {
             plata.push(anxiety.Population);
             country.push(anxiety.Year);
         });
@@ -106,7 +108,7 @@ Highcharts.chart('container', {
   <br>
   <Nav>
     <NavItem>
-    <NavLink href="/">Página Principal</NavLink>
+    <NavLink href="/">Pรกgina Principal</NavLink>
     </NavItem>
     <NavItem>
     <NavLink href="#/integrations">Integraciones</NavLink>
