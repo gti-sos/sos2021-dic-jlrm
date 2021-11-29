@@ -65,9 +65,10 @@ Highcharts.chart('container', {
         type: 'pie',
         allowPointSelect: true,
         keys: ['name', 'y', 'selected', 'sliced'],
-        data: {
-		nombre, volumen
-		},
+        series: [{
+        name: 'Volumen',
+        data: volumen
+}],
         showInLegend: true
     }]
 });
