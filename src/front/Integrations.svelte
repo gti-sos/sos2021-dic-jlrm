@@ -7,10 +7,9 @@
 <main>
  <center><h1>sos2021-dic-jlrm</h1></center>	<br>
 <Container style="background-color:#121212; color:white; border-radius:4px; padding: 20px">
-
-<br>
-Este proyecto tiene implementadas las siguientes tablas o graficas:
 <center>
+Este proyecto tiene implementadas las siguientes tablas o graficas:<br>
+
 <ButtonGroup>
   <a href="/#/death-stats"><Button light style="margin:2px;">Tabla de la API</Button></a>
   <a href="/#/death-stats-graph1"><Button light style="margin:2px;">Grafico de la API</Button></a>

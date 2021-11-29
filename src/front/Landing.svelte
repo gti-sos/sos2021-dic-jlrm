@@ -9,6 +9,7 @@
 	<br>
 <Container style="background-color:#121212; color:white; border-radius:4px; padding: 20px">
 	<center><img src="./images/mapa.png" /></center>
+	<br>
   <Row>
     <Col><center>
 <ButtonGroup>
