@@ -2,11 +2,11 @@
   import { Nav, NavItem, NavLink } from "sveltestrap";
   var errorMsg = "";
   var datos = [];
-  const BASE_API_RENTALS = "https://api.coinstats.app/public/v1/coins"
+  const BASE_API_FIN = "https://api.coinstats.app/public/v1/coins"
  
   async function loadRentals() {
       console.log("Loading data...");
-      const res = await fetch(BASE_API_RENTALS).then(
+      const res = await fetch(BASE_API_FIN).then(
         function (res) {
           if (res.ok) {
             errorMsg = "";
@@ -24,7 +24,7 @@
     async function getDatos() {
       console.log("Fetching data...");
       await loadRentals();
-      const res = await fetch(BASE_API_RENTALS);
+      const res = await fetch(BASE_API_FIN);
       if (res.ok) {
         const json = await res.json();
         datos = json;
@@ -39,25 +39,25 @@
       await getDatos();
 
 	  let data_x = Object.values(datos["coins"]);
-         var renta = [];
-      var metros = [] ;
-      var anyo = [] ;
+         var uno = [];
+      var dos = [] ;
+      var tres = [] ;
         data_x.forEach((x) => {
-            renta.push(x["volume"]);
-            metros.push(x["id"]);
-			anyo.push(x["id"]);
+            uno.push(x["volume"]);
+            dos.push(x["id"]);
+			tres.push(x["id"]);
         });
 		
-      console.log(metros);
-      console.log(anyo);
-      console.log(renta);
+      console.log(uno);
+      console.log(dos);
+      console.log(tres);
       Highcharts.chart('container', {
           chart: {
               type: 'packedbubble',
               height: '100%'
           },
           title: {
-              text: 'Uso de la API de Alquileres'
+              text: 'Uso de la API'
           },
           tooltip: {
               useHTML: true,
@@ -91,15 +91,15 @@
           },
           series:  [{
               name: 'Metros',
-              data: metros
+              data: uno
           },
           {
               name: 'Año',
-              data: anyo
+              data: dos
           },
           {
               name: 'Renta',
-              data: renta
+              data: tres
           }]
       });
   }        
