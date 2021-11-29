@@ -38,14 +38,12 @@
 
 async function loadGraph(){
    await getDatos();
-   	    let json = await res.json();
-   		let data_us = json;
    		let data_us = Object.values(datos["data"]);
         var plata = [] ;
         var country = [] ;
-        data_us.forEach((anxiety) => {
-            plata.push(anxiety.Population);
-            country.push(anxiety.Year);
+        data_us.forEach((d) => {
+            plata.push(d["Population"]);
+            country.push(d["Year"]);
         });
 		
 		
