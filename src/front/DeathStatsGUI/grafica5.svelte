@@ -2,7 +2,7 @@
    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_POPULATION = "https://datausa.io/api/data?drilldowns=Nation&measures=Population"
+    const BASE_API_POPULATION = "https://api.coinstats.app/public/v1/coins"
    
     async function loadRentals() {
         console.log("Loading data...");
@@ -38,12 +38,12 @@
 
 async function loadGraph(){
    await getDatos();
-   		let data_us = Object.values(datos["data"]);
+   		let data_us = Object.values(datos["coins"]);
         var poblacion = [] ;
         var anio = [] ;
         data_us.forEach((d) => {
-            poblacion.push(d["Population"]);
-            anio.push(d["Year"]);
+            poblacion.push(d["volume"]);
+            anio.push(d["id"]);
         });
 		
 		

@@ -63,7 +63,7 @@
           <DropdownItem><a href="#/death-stats-graph1">Grafico de la API</a></DropdownItem>
           <DropdownItem divider />
           <DropdownItem><a href="https://documenter.getpostman.com/view/18555262/UVJckGmU">Documentacion POSTMAN V1</a></DropdownItem>
-		  <DropdownItem><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">Documentacion POSTMAN V1</a></DropdownItem>
+		  <DropdownItem><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">Documentacion POSTMAN V2</a></DropdownItem>
         </DropdownMenu>
       </Dropdown>
 	  	 <Dropdown nav inNavbar>
