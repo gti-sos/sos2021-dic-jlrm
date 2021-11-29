@@ -15,7 +15,7 @@ var death_stats_api = require("./src/back/v2");
 var death_stats_api_v1 = require("./src/back/v1");
 
 death_stats_api.register(app, BASE_API_PATH_v2);
-death_stats_api_v1.register(app, BASE_API_PATH);
+death_stats_api_v1.register(app, BASE_API_PATH_v1);
 
 
 //Integracion proxy Integrada
