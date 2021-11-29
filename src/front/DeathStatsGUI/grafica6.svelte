@@ -40,9 +40,9 @@ async function loadGraph(){
    await getDatos();
    		let data_vacuna = Object.values(datos["phases"]);
         var fase = [] ;
-        var candidatas = [] ;
+        var candidata = [] ;
         data_vacuna.forEach((d) => {
-            candidatas.push(d["candidates"]);
+            candidata.push(d["candidates"]);
             fase.push(d["phase"]);
         });
 		
@@ -84,8 +84,8 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Poblacion para este año en EEUU',
-        data: candidatas
+        name: 'Candidata en esta fase',
+        data: candidata
 }]
 });
 
@@ -106,7 +106,7 @@ Highcharts.chart('container', {
   <br>
   <Nav>
     <NavItem>
-    <NavLink href="/">Pรกgina Principal</NavLink>
+    <NavLink href="/">Pagina Principal</NavLink>
     </NavItem>
     <NavItem>
     <NavLink href="#/integrations">Integraciones</NavLink>
