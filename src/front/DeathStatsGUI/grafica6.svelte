@@ -38,8 +38,8 @@
       async function loadGraph(){
         await getDatos();
    		let data_x = Object.values(datos["data"]);
-        var usd = [] ;
-        var btc = [] ;
+        let usd = [] ;
+        let btc = [] ;
         data_x.forEach((x) => {
 		
 			let float_usd = parseFloat(x.price_usd)
@@ -89,18 +89,7 @@ Highcharts.chart('container', {
     },
     series: [{
         name: 'Europe',
-        data: [{
-            name: 'Germany',
-            value: 767.1
-        }, {
-            name: 'Croatia',
-            value: parseInt(btc)
-        },
-			{
-			name: 'USD',
-			value: usd
-			}
-        ]
+        data: usd
     }]
 });
 
