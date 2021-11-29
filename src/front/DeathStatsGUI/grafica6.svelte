@@ -2,7 +2,7 @@
   import { Nav, NavItem, NavLink } from "sveltestrap";
   var errorMsg = "";
   var datos = [];
-  const BASE_API_FIN = "https://api.coinstats.app/public/v1/coins"
+  const BASE_API_FIN = "https://parallelum.com.br/fipe/api/v1/motos/marcas"
  
   async function loadRentals() {
       console.log("Loading data...");
@@ -42,10 +42,9 @@
          var uno = [];
       var dos = [] ;
       var tres = [] ;
-        data_x.forEach((x) => {
-            uno.push(x["volume"]);
-            dos.push(x["id"]);
-			tres.push(x["id"]);
+        datos.forEach((x) => {
+            uno.push(x["codigo"]);
+          
         });
 		
       console.log(uno);
@@ -92,14 +91,6 @@
           series:  [{
               name: 'Metros',
               data: uno
-          },
-          {
-              name: 'Año',
-              data: dos
-          },
-          {
-              name: 'Renta',
-              data: tres
           }]
       });
   }        
