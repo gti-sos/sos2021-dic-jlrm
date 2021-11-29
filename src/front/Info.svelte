@@ -19,6 +19,5 @@
       <li>Enlace documentacion postman:</li>
 		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGmU">V1</a>
 		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">V2</a>
-  <li>
 </ul>
 </Container></main>
