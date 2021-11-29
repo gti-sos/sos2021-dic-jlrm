@@ -1,11 +1,12 @@
 <script>
-  import { Nav, NavItem, NavLink } from "sveltestrap";
+   import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_COIN = "https://parallelum.com.br/fipe/api/v1/carros/marcas"
-     async function loadRentals() {
+    const BASE_API_CRYPTO = "https://api.coinstats.app/public/v1/coins"
+   
+    async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_COIN).then(
+        const res = await fetch(BASE_API_CRYPTO).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -23,7 +24,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_COIN);
+        const res = await fetch(BASE_API_CRYPTO);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -34,55 +35,48 @@
           console.log("ERROR!" + errorMsg);
         }
       }
-	  
-      async function loadGraph(){
-        await getDatos();
-        let usd = [] ;
-        let btc = [] ;
-        datos.forEach((x) => {
-			let float_usd = parseInt(x.codigo)
-            usd.push(float_usd);
-            btc.push(x.nome);
-                
+
+async function loadGraph(){
+   await getDatos();
+   		let data_c = Object.values(datos["coins"]);
+        var volumen = [] ;
+        var nombre = [] ;
+        data_c.forEach((d) => {
+            volumen.push(d["volume"]);
+            nombre.push(d["id"]);
         });
-        
+		
+		
+		
+// Set up the chart
 Highcharts.chart('container', {
 
     chart: {
-        type: 'column',
         styledMode: true
     },
 
     title: {
-        text: 'Styling axes and columns'
+        text: 'Pie point CSS'
     },
 
-    yAxis: [{
-        className: 'highcharts-color-0',
-        title: {
-            text: 'Primary axis'
-        }
-    }, {
-        className: 'highcharts-color-1',
-        opposite: true,
-        title: {
-            text: 'Secondary axis'
-        }
-    }],
 
-    plotOptions: {
-        column: {
-            borderRadius: 5
-        }
-    },
 
     series: [{
-        data: btc
-    }, {
-        data: usd,
-        yAxis: 1
+        type: 'pie',
+        allowPointSelect: true,
+        keys: ['name', 'y', 'selected', 'sliced'],
+        data: [
+            ['Apples', 29.9, false],
+            ['Pears', 71.5, false],
+            ['Oranges', 106.4, false],
+            ['Plums', 129.2, false],
+            ['Bananas', 144.0, false],
+            ['Peaches', 176.0, false],
+            ['Prunes', 135.6, true, true],
+            ['Avocados', 148.5, false]
+        ],
+        showInLegend: true
     }]
-
 });
 
 }
@@ -91,13 +85,13 @@ Highcharts.chart('container', {
 
 <svelte:head>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
-  <center><h1>Estadísticas de ansiedad en hombres por año</h1></center>
+  <center><h1>Volumen criptomonedas</h1></center>
 <br>
   <br>
   <Nav>
@@ -112,21 +106,34 @@ Highcharts.chart('container', {
         </NavItem>
     </Nav>      
   <br>
-   <figure class="highcharts-figure">
+<figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
+      
     </p>
 </figure>
+
 
 </main>
 
 <style>
 @import "https://code.highcharts.com/css/highcharts.css";
 
+.highcharts-pie-series .highcharts-point {
+    stroke: #ede;
+    stroke-width: 2px;
+}
+
+.highcharts-pie-series .highcharts-data-label-connector {
+    stroke: silver;
+    stroke-dasharray: 2, 2;
+    stroke-width: 2px;
+}
+
 .highcharts-figure,
 .highcharts-data-table table {
-    min-width: 310px;
-    max-width: 800px;
+    min-width: 320px;
+    max-width: 600px;
     margin: 1em auto;
 }
 
@@ -164,37 +171,6 @@ Highcharts.chart('container', {
 
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
-}
-
-.highcharts-yaxis .highcharts-axis-line {
-    stroke-width: 2px;
-}
-
-/* Link the series colors to axis colors */
-.highcharts-color-0 {
-    fill: #7cb5ec;
-    stroke: #7cb5ec;
-}
-
-.highcharts-axis.highcharts-color-0 .highcharts-axis-line {
-    stroke: #7cb5ec;
-}
-
-.highcharts-axis.highcharts-color-0 text {
-    fill: #7cb5ec;
-}
-
-.highcharts-color-1 {
-    fill: #90ed7d;
-    stroke: #90ed7d;
-}
-
-.highcharts-axis.highcharts-color-1 .highcharts-axis-line {
-    stroke: #90ed7d;
-}
-
-.highcharts-axis.highcharts-color-1 text {
-    fill: #90ed7d;
 }
 
 
