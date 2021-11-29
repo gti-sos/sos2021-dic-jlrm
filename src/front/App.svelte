@@ -61,13 +61,19 @@
         <DropdownMenu end>
           <DropdownItem><a href="#/death-stats">Tabla de la API</a></DropdownItem>
           <DropdownItem><a href="#/death-stats-graph1">Grafico de la API</a></DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem><a href="https://documenter.getpostman.com/view/18555262/UVJckGmU">Documentacion POSTMAN V1</a></DropdownItem>
+		  <DropdownItem><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">Documentacion POSTMAN V1</a></DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+	  	 <Dropdown nav inNavbar>
+        <DropdownToggle nav caret><a href="#/integrations">Integraciones</a></DropdownToggle>
+        <DropdownMenu end>
           <DropdownItem><a href="#/graph3">Grafico Integrado</a></DropdownItem>
 	      <DropdownItem><a href="#/graph2">Grafico Usado 1</a></DropdownItem>
           <DropdownItem><a href="#/graph4">Grafico Usado 2</a></DropdownItem>
           <DropdownItem><a href="#/graph5">Grafico Externo 1</a></DropdownItem>
 		  <DropdownItem><a href="#/graph6">Grafico Externo 2</a></DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>Documentacion POSTMAN</DropdownItem>
         </DropdownMenu>
       </Dropdown>
       <NavItem>
