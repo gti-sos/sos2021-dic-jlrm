@@ -41,8 +41,8 @@
         var usd = [] ;
         var btc = [] ;
         data_x.forEach((x) => {
-            usd.push(x["price_usd"]);
-            btc.push(x["price_btc"]);
+            usd.push(x.price_usd);
+            btc.push(x.price_btc);
         });
         
 Highcharts.chart('container', {
