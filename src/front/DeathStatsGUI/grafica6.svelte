@@ -51,52 +51,55 @@ async function loadGraph(){
 // Set up the chart
 Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'packedbubble',
+        height: '100%'
     },
     title: {
-        text: 'Candidatas por fase de vacuna covid'
-    },
-    subtitle: {
-        text: '-------'
-    },
-    xAxis: {
-        categories: fase,
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Rainfall (mm)'
-        }
+        text: 'Carbon emissions around the world (2014)'
     },
     tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
+        useHTML: true,
+        pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
     },
     plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
+        packedbubble: {
+            minSize: '30%',
+            maxSize: '120%',
+            zMin: 0,
+            zMax: 1000,
+            layoutAlgorithm: {
+                splitSeries: false,
+                gravitationalConstant: 0.02
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}',
+                filter: {
+                    property: 'y',
+                    operator: '>',
+                    value: 250
+                },
+                style: {
+                    color: 'black',
+                    textOutline: 'none',
+                    fontWeight: 'normal'
+                }
+            }
         }
     },
     series: [{
-        name: 'Candidata en esta fase',
-        data: candidata
-}]
+        name: 'Europe',
+        data: fase, candidata
+    }]
 });
 
 }
 
 </script>
 
-<svelte:head>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
@@ -129,13 +132,9 @@ Highcharts.chart('container', {
 <style>
 .highcharts-figure,
 .highcharts-data-table table {
-    min-width: 310px;
+    min-width: 320px;
     max-width: 800px;
     margin: 1em auto;
-}
-
-#container {
-    height: 400px;
 }
 
 .highcharts-data-table table {
@@ -173,5 +172,6 @@ Highcharts.chart('container', {
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
+
 
 </style>
