@@ -2,7 +2,7 @@
    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_ANXIETY = "https://disease.sh/v3/covid-19/states"
+    const BASE_API_ANXIETY = "https://datausa.io/api/data?drilldowns=Nation&measures=Population"
    
     async function loadRentals() {
         console.log("Loading data...");
@@ -42,8 +42,8 @@ async function loadGraph(){
         var plata = [] ;
         var country = [] ;
         datos.forEach((anxiety) => {
-            plata.push(anxiety.deaths);
-            country.push(anxiety.cases);
+            plata.push(anxiety.data.Population);
+            country.push(anxiety.data.Year);
         });
 		
 		
