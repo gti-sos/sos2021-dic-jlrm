@@ -250,7 +250,7 @@
             </div>
         </div>
 
-        <Table bordered>
+        <Table responsive dark bordered>
             <thead>
                 <tr>
                     <th>Provincia</th>

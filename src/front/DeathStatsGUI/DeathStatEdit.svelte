@@ -73,7 +73,7 @@
 <main>
     <h3>Editando <strong>{params.province}</strong> en el año <strong>{params.year}</strong></h3>
     <div id="update">
-        <Table bordered>
+        <Table responsive dark bordered>
             <thead>
                 <tr>
                     <th>Provincia</th>
