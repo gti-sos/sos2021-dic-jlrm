@@ -79,8 +79,8 @@ Highcharts.chart('container', {
     },
     plotOptions: {
         column: {
-            pointPadding: 3,
-            borderWidth: 2
+            pointPadding: 0.2,
+            borderWidth: 0
         }
     },
     series: [{
