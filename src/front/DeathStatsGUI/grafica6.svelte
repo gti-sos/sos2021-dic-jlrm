@@ -39,8 +39,8 @@
 async function loadGraph(){
    await getDatos();
    		let data_vacuna = Object.values(datos["phases"]);
-        var poblacion = [] ;
-        var anio = [] ;
+        var fase = [] ;
+        var candidatas = [] ;
         data_vacuna.forEach((d) => {
             candidatas.push(d["candidates"]);
             fase.push(d["phase"]);
