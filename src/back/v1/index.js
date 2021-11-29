@@ -1,12 +1,13 @@
-var BASE_API_PATH = "/api/v1";
+var BASE_API_PATH_v1 = "/api/v1";
 var Datastore = require("nedb");
 
 var db = new Datastore();
 
 
-module.exports.register = (app, BASE_API_PATH_v2) => {
-var deathStats = [
-	{
+module.exports.register = (app, BASE_API_PATH_v1) => {
+ app.get(BASE_API_PATH_v1 + "/death-stats/loadInitialData", (req, res) => {
+        deathStats = [
+    {
 		"province" : "almeria",
 		"year" : 2005,
 		"tumor" : 1068,
@@ -35,17 +36,39 @@ var deathStats = [
 		"respiratory_system_disease" : 573
 	},
 		{
+		"province" : "sevilla",
+		"year" : 2008,
+		"tumor" : 1131,
+		"circulatory_system_disease" : 1375,
+		"respiratory_system_disease" : 573
+	},
+		{
 		"province" : "almeria",
 		"year" : 2009,
 		"tumor" : 1207,
 		"circulatory_system_disease" : 1336,
 		"respiratory_system_disease" : 489
 	}
-	
-]
+        ];
 
-db.insert(deathStats);
-
+		
+		//Creacion de recursos
+        db.find({ $or: [{ province: "almeria" }, { province: "sevilla" }] }, { _id: 0 }, function (err, data) {
+            if (err) {
+                console.error("ERROR accesing DB in GET");
+                res.sendStatus(500);
+            } else {
+                if (data.length == 0) {
+                    db.insert(deathStats);
+                    console.log(`Loaded initial data: <${JSON.stringify(deathStats, null, 2)}>`);
+                    res.sendStatus(201);
+                } else {
+                    console.error(`initial data already exists`);
+                    res.sendStatus(409);
+                }
+            }
+        });
+    })
 //Using paperwork for JSON validation
 var paperwork = require("paperwork");
 
@@ -63,6 +86,22 @@ var deathStatsSchema = {
 app.get(BASE_API_PATH+"/death-stats/loadInitialData", (req,res) =>{
 	res.send(JSON.stringify(deathStats,null,2));
 });
+	
+	      db.find({ $or: [{ province: "almeria" }, { province: "sevilla" }] }, { _id: 0 }, function (err, data) {
+            if (err) {
+                console.error("ERROR accesing DB in GET");
+                res.sendStatus(500);
+            } else {
+                if (data.length == 0) {
+                    db.insert(death_stats_data);
+                    console.log(`Loaded initial data: <${JSON.stringify(death_stats_data, null, 2)}>`);
+                    res.sendStatus(201);
+                } else {
+                    console.error(`initial data already exists`);
+                    res.sendStatus(409);
+                }
+            }
+        });
 
 //GET a la lista de recursos
 app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
