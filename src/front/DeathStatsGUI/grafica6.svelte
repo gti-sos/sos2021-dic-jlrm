@@ -2,7 +2,7 @@
    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_CRYPTO = "https://api.coinstats.app/public/v1/coins"
+    const BASE_API_CRYPTO = "https://parallelum.com.br/fipe/api/v1/motos/marcas"
    
     async function loadRentals() {
         console.log("Loading data...");
@@ -41,9 +41,9 @@ async function loadGraph(){
    		let data_c = Object.values(datos["coins"]);
         var volumen = [] ;
         var nombre = [] ;
-        data_c.forEach((d) => {
-            volumen.push(d["volume"]);
-            nombre.push(d["id"]);
+        datos.forEach((d) => {
+            volumen.push(d.codigo);
+            nombre.push(d.nome);
         });
 		
 		
