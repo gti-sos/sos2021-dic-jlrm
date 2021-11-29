@@ -2,11 +2,11 @@
    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_POPULATION = "https://api.coinstats.app/public/v1/coins"
+    const BASE_API_CRYPTO = "https://api.coinstats.app/public/v1/coins"
    
     async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_POPULATION).then(
+        const res = await fetch(BASE_API_CRYPTO).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -24,7 +24,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_POPULATION);
+        const res = await fetch(BASE_API_CRYPTO);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -38,12 +38,12 @@
 
 async function loadGraph(){
    await getDatos();
-   		let data_us = Object.values(datos["coins"]);
-        var poblacion = [] ;
-        var anio = [] ;
-        data_us.forEach((d) => {
-            poblacion.push(d["volume"]);
-            anio.push(d["id"]);
+   		let data_c = Object.values(datos["coins"]);
+        var volumen = [] ;
+        var nombre = [] ;
+        data_c.forEach((d) => {
+            volumen.push(d["volume"]);
+            nombre.push(d["id"]);
         });
 		
 		
@@ -54,13 +54,13 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Candidatas por fase de vacuna covid'
+        text: 'Volumen criptomonedas'
     },
     subtitle: {
         text: '-------'
     },
     xAxis: {
-        categories: anio,
+        categories: nombre,
         crosshair: true
     },
     yAxis: {
@@ -84,8 +84,8 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Poblacion para este año en EEUU',
-        data: poblacion
+        name: 'Volumen',
+        data: volumen
 }]
 });
 
@@ -101,12 +101,12 @@ Highcharts.chart('container', {
 </svelte:head>
 
 <main>
-  <center><h1>Candidatas por fase de vacuna covid</h1></center>
+  <center><h1>Volumen criptomonedas</h1></center>
 <br>
   <br>
   <Nav>
     <NavItem>
-    <NavLink href="/">Pรกgina Principal</NavLink>
+    <NavLink href="/">Pagina Principal</NavLink>
     </NavItem>
     <NavItem>
     <NavLink href="#/integrations">Integraciones</NavLink>
