@@ -17,8 +17,8 @@
   <ul>
       <li>Enlace API: <a href="https://sos2021-dic-jlrm.herokuapp.com/api/v2/death-stats">https://sos2021-dic-jlrm.herokuapp.com/api/v2/death-stats</a></li>
       <li>Enlace documentacion postman:</li>
-		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGmU">V1</a></ul>
-		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">V2</a></ul>
+		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGmU">V1</a>
+		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">V2</a>
   <li>
 </ul>
 </Container></main>
