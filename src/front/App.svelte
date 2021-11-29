@@ -11,6 +11,7 @@
 	import Graph5 from './DeathStatsGUI/grafica5.svelte';
 	import Graph6 from './DeathStatsGUI/grafica6.svelte';
 	import NotFound from './NotFound.svelte';
+	import About from './About.svelte';
 	import Info from './Info.svelte';
 	import Integrations from './Integrations.svelte';
 
@@ -26,6 +27,7 @@
 		"/graph6": Graph6,
 		"/death-stats/:province/:year": DeathStatsEdit,
 		"/info": Info,
+		"/about": About,
 		"/integrations": Integrations,
 		"*": NotFound
 	};
@@ -52,7 +54,7 @@
 </script>
 
 <Navbar color="dark" dark expand="md">
-  <NavbarBrand href="/">Estadisticas de muerte - Andalucia</NavbarBrand>
+  <NavbarBrand href="/">Estadisticas JLRM</NavbarBrand>
   <NavbarToggler on:click={() => (isOpen = !isOpen)} />
   <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
     <Nav class="mr-auto" navbar>

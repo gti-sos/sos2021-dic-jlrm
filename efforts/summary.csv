@@ -1,0 +1,20 @@
+﻿Project,Client,Description,Duration
+sos2021-dic-jlrm,,#1 Completar plantilla,03:11:21
+sos2021-dic-jlrm,,#10 Crear ruta /api/v1/YYYYYY/loadInitialData,00:18:56
+sos2021-dic-jlrm,,#11 Implementar todos los casos de la tabla azul,09:30:20
+sos2021-dic-jlrm,,#12 Crear colección postman API,02:08:08
+sos2021-dic-jlrm,,#14 Implementación sistema de persistencia y buenas practicas,01:14:37
+sos2021-dic-jlrm,,#15 Implementar front end svelte,01:08:43
+sos2021-dic-jlrm,,#16 Ruta http://sos2021-XX.herokuapp.com/#/info,01:00:19
+sos2021-dic-jlrm,,#17 Front-end Svelte que permita todas las funcionalidades básicas,08:33:02
+sos2021-dic-jlrm,,#18 Terminar /info,01:55:44
+sos2021-dic-jlrm,,#19 Implementar grafico,10:59:00
+sos2021-dic-jlrm,,#2 Configuración proyectos toggl,00:03:03
+sos2021-dic-jlrm,,#20 Implementación widget  y heroku,03:41:09
+sos2021-dic-jlrm,,#3 Añadir datos readme.md de sos2021,00:10:33
+sos2021-dic-jlrm,,#4 Instalar cool ascii faces,03:06:16
+sos2021-dic-jlrm,,#5 Crear index.html con información como readme.md,00:18:33
+sos2021-dic-jlrm,,#6 Implementar servidor web NODE.js l05,03:43:06
+sos2021-dic-jlrm,,#7 Index.html en public con readme.md,00:13:10
+sos2021-dic-jlrm,,#8 Desplegar heroku,00:22:18
+sos2021-dic-jlrm,,#9 Crear ruta info/YYYYYY,00:49:31

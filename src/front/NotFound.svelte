@@ -1,3 +1,3 @@
 <main>
-<h3>This view doesn't exist.</h3>
+<h3>Pagina no encontrada 404.</h3>
 </main>
