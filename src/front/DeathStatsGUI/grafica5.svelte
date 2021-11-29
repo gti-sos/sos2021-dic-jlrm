@@ -2,11 +2,11 @@
    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_ANXIETY = "https://datausa.io/api/data?drilldowns=Nation&measures=Population"
+    const BASE_API_POPULATION = "https://datausa.io/api/data?drilldowns=Nation&measures=Population"
    
     async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_ANXIETY).then(
+        const res = await fetch(BASE_API_POPULATION).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -24,7 +24,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_ANXIETY);
+        const res = await fetch(BASE_API_POPULATION);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -39,11 +39,11 @@
 async function loadGraph(){
    await getDatos();
    		let data_us = Object.values(datos["data"]);
-        var plata = [] ;
-        var country = [] ;
+        var poblacion = [] ;
+        var anio = [] ;
         data_us.forEach((d) => {
-            plata.push(d["Population"]);
-            country.push(d["Year"]);
+            poblacion.push(d["Population"]);
+            anio.push(d["Year"]);
         });
 		
 		
@@ -60,7 +60,7 @@ Highcharts.chart('container', {
         text: '-------'
     },
     xAxis: {
-        categories: country,
+        categories: anio,
         crosshair: true
     },
     yAxis: {
@@ -79,13 +79,13 @@ Highcharts.chart('container', {
     },
     plotOptions: {
         column: {
-            pointPadding: 0.2,
-            borderWidth: 0
+            pointPadding: 3,
+            borderWidth: 2
         }
     },
     series: [{
-        name: 'China',
-        data: plata
+        name: 'Poblacion para este año en EEUU',
+        data: poblacion
 }]
 });
 
