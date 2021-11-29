@@ -38,11 +38,11 @@
       async function loadGraph(){
         await getDatos();
    		let data_x = Object.values(datos["data"]);
-        var price_usd = [] ;
-        var price_btc = [] ;
+        var usd = [] ;
+        var btc = [] ;
         data_x.forEach((x) => {
-            price_usd.push(x["price_usd"]);
-            price_btc.push(x["price_btc"]);
+            usd.push(x["price_usd"]);
+            btc.push(x["price_btc"]);
         });
         
 Highcharts.chart('container', {
@@ -90,11 +90,11 @@ Highcharts.chart('container', {
             value: 767.1
         }, {
             name: 'Croatia',
-            value: 20.7
+            value: parseInt(btc)
         },
 			{
 			name: 'USD',
-			value: price_usd
+			value: usd
 			}
         ]
     }]
