@@ -3,11 +3,12 @@ name: CI
 on:
   push:
     branches: [ main ]
-	
+
 jobs:
   integrationTests:
     runs-on: ubuntu-latest
-	steps:
-	  - uses: actions/checkout@v2
-	  - run: npm install &
-	  - nun: npx newman tests/integration-v1.json
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm start &
+      - run: npx newman run tests/integrationv1.json
