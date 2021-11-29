@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "9e678d6c-6898-409b-8a39-2e5b4d78dba6",
+		"name": "SOS2021-dic-jlrm-death-stats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get loadInitialData",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a un recurso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST a recursos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"province\": \"huelva\",\r\n\"year\": 2004,\r\n\"tumor\": 1068,\r\n\"circulatory_system_disease\": 1154,\r\n\"respiratory_system_disease\": 593\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a almeria/2007",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/almeria/2007",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						"almeria",
+						"2007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a almeria/2008",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/almeria/2008",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						"almeria",
+						"2008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT a almeria/2005",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"province\": \"almeria\",\r\n\"year\": 2005,\r\n\"tumor\": 1999,\r\n\"circulatory_system_disease\": 1154,\r\n\"respiratory_system_disease\": 593\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/almeria/2005",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						"almeria",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST erroneo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"province\": \"huelva\",\r\n\"year\": 2004,\r\n\"tumor\": 1068,\r\n\"circulatory_system_disease\": 1154,\r\n\"respiratory_system_disease\": 593\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/almeria/2005",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						"almeria",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT no permitido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"province\": \"almeria\",\r\n\"year\": 2005,\r\n\"tumor\": 1068,\r\n\"circulatory_system_disease\": 1154,\r\n\"respiratory_system_disease\": 593\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"province\": \"almeria\",\r\n\"year\": 2005,\r\n\"tumor\": 1068,\r\n\"circulatory_system_disease\": 1154,\r\n\"respiratory_system_disease\": 593\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-dic-jlrm.herokuapp.com/api/v1/death-stats/",
+					"protocol": "https",
+					"host": [
+						"sos2021-dic-jlrm",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"death-stats",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
