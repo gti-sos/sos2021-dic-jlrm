@@ -5,7 +5,7 @@
     const BASE_API_COIN = "https://api.coinlore.net/api/tickers/?start=20&limit=10"
      async function loadRentals() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_CRYPTO).then(
+        const res = await fetch(BASE_API_COIN).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -23,7 +23,7 @@
       async function getDatos() {
         console.log("Fetching data...");
         await loadRentals();
-        const res = await fetch(BASE_API_CRYPTO);
+        const res = await fetch(BASE_API_COIN);
         if (res.ok) {
           const json = await res.json();
           datos = json;
