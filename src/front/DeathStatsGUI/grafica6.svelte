@@ -2,7 +2,7 @@
   import { Nav, NavItem, NavLink } from "sveltestrap";
   var errorMsg = "";
   var datos = [];
-  const BASE_API_FIN = "https://parallelum.com.br/fipe/api/v1/motos/marcas"
+  const BASE_API_FIN = "https://restcountries.com/v2/lang/es"
  
   async function loadRentals() {
       console.log("Loading data...");
@@ -40,11 +40,10 @@
 
          var uno = [];
       var dos = [] ;
-      var tres = [] ;
-        datos.forEach((x) => {
-            uno.push(x["codigo"]);
-          
-        });
+    	datos.forEach((dato) => {
+          uno.push(dato.population);
+          dos.push(dato.area);
+      });
 		
       console.log(uno);
       console.log(dos);
@@ -90,6 +89,10 @@
           series:  [{
               name: 'Metros',
               data: uno
+          },
+          {
+              name: 'Año',
+              data: dos
           }]
       });
   }        
