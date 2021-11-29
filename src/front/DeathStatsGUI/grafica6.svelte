@@ -35,7 +35,7 @@
         }
       }
 	  
-      async function loadChart(){
+      async function loadGraph(){
         await getDatos();
    		let data_x = Object.values(datos["data"]);
         var price_usd = [] ;
