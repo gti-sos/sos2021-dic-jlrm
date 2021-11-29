@@ -2,7 +2,7 @@
   import { Nav, NavItem, NavLink } from "sveltestrap";
   var errorMsg = "";
   var datos = [];
-  const BASE_API_RENTALS = "https://api.coinlore.net/api/tickers/?start=20&limit=10"
+  const BASE_API_RENTALS = "https://api.coinstats.app/public/v1/coins"
  
   async function loadRentals() {
       console.log("Loading data...");
@@ -38,14 +38,14 @@
     async function loadGraph(){
       await getDatos();
 
-	  let data_x = Object.values(datos["data"]);
+	  let data_x = Object.values(datos["coins"]);
          var renta = [];
       var metros = [] ;
       var anyo = [] ;
         data_x.forEach((x) => {
-            renta.push(x["csupply"]);
-            metros.push(x["tsupply"]);
-			anyo.push(x["csupply"]);
+            renta.push(x["volume"]);
+            metros.push(x["id"]);
+			anyo.push(x["id"]);
         });
 		
       console.log(metros);
