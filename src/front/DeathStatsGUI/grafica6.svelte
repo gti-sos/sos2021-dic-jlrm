@@ -1,12 +1,12 @@
 <script>
-    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
+  import { Nav, NavItem, NavLink } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_MOTOS = "https://parallelum.com.br/fipe/api/v1/motos/marcas"
-   
-    async function loadRentals() {
+    const BASE_API_COIN = "https://api.coinlore.net/api/tickers/?start=20&limit=10"
+    //INTEGRACION API INTERNA
+    async function loadChildren() {
         console.log("Loading data...");
-        const res = await fetch(BASE_API_MOTOS).then(
+        const res = await fetch(BASE_API_COIN).then(
           function (res) {
             if (res.ok) {
               errorMsg = "";
@@ -23,8 +23,8 @@
     
       async function getDatos() {
         console.log("Fetching data...");
-        await loadRentals();
-        const res = await fetch(BASE_API_MOTOS);
+        await loadChildren();
+        const res = await fetch(BASE_API_COIN);
         if (res.ok) {
           const json = await res.json();
           datos = json;
@@ -35,64 +35,64 @@
           console.log("ERROR!" + errorMsg);
         }
       }
-
-async function loadGraph(){
-   await getDatos();
-   
-        var plata = [] ;
-        var country = [] ;
-        datos.forEach((anxiety) => {
-            plata.push(anxiety.codigo);
-            country.push(anxiety.nome);
+      async function loadChart(){
+        await getDatos();
+   		let data_x = Object.values(datos["data"]);
+        var price_usd = [] ;
+        var price_btc = [] ;
+        data_c.forEach((x) => {
+            volumen.push(x["price_usd"]);
+            nombre.push(x["price_btc"]);
         });
-		
-		
-// Set up the chart
-const chart = new Highcharts.Chart({
+        
+        Highcharts.chart('container', {
     chart: {
-        renderTo: 'container',
-        type: 'column',
-        options3d: {
-            enabled: true,
-            alpha: 15,
-            beta: 15,
-            depth: 50,
-            viewDistance: 25
-        }
+        type: 'packedbubble',
+        height: '100%'
     },
     title: {
-        text: 'Grafico ansiedad en hombre por comunidad'
+        text: 'Price of cryptos'
     },
-    subtitle: {
-        text: '---------------'
-    },
-	 xAxis: {
-        categories: country,
+    tooltip: {
+        useHTML: true,
+        pointFormat: '<b>{point.name}:</b> {point.value} prices'
     },
     plotOptions: {
-        column: {
-            depth: 25
+        packedbubble: {
+            minSize: '30%',
+            maxSize: '120%',
+            zMin: 0,
+            zMax: 1000,
+            layoutAlgorithm: {
+                splitSeries: false,
+                gravitationalConstant: 0.02
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}',
+                filter: {
+                    property: 'y',
+                    operator: '>',
+                    value: 250
+                },
+                style: {
+                    color: 'black',
+                    textOutline: 'none',
+                    fontWeight: 'normal'
+                }
+            }
         }
     },
     series: [{
-        data: plata
+        name: 'Precio bitcoin',
+        data: price_btc
+        
+    }, {
+        name: 'Precio USD',
+        data:  price_usd
+        
     }]
 });
-
-function showValues() {
-    document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
-    document.getElementById('beta-value').innerHTML = chart.options.chart.options3d.beta;
-    document.getElementById('depth-value').innerHTML = chart.options.chart.options3d.depth;
-}
-
-// Activate the sliders
-document.querySelectorAll('#sliders input').forEach(input => input.addEventListener('input', e => {
-    chart.options.chart.options3d[e.target.id] = parseFloat(e.target.value);
-    showValues();
-    chart.redraw(false);
-}));
-
-showValues();
 
 }
 
@@ -144,24 +144,37 @@ showValues();
 </main>
 
 <style>
-#container {
-    height: 400px;
-}
-
-.highcharts-figure,
-.highcharts-data-table table {
-    min-width: 310px;
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 320px; 
     max-width: 800px;
     margin: 1em auto;
 }
-
-#sliders td input[type="range"] {
-    display: inline;
+.highcharts-data-table table {
+	font-family: Verdana, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #EBEBEB;
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+	max-width: 500px;
 }
-
-#sliders td {
-    padding-right: 1em;
-    white-space: nowrap;
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
 }
 
 </style>
