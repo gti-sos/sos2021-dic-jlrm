@@ -39,7 +39,7 @@
         await getDatos();
         let usd = [] ;
         let btc = [] ;
-        data.forEach((x) => {
+        datos.forEach((x) => {
 			let float_usd = parseINT(x.codigo)
             usd.push(float_usd);
             btc.push(x.nome);
