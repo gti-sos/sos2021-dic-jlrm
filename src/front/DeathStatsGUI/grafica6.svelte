@@ -47,7 +47,6 @@
 		
       console.log(uno);
       console.log(dos);
-      console.log(tres);
       Highcharts.chart('container', {
           chart: {
               type: 'packedbubble',
