@@ -10,13 +10,16 @@
 
 <br>
 <ul>
-  <li><b>Project description: </b> My source of information is aimed at analyzing the relationship between the causes of death at the provincial level of Andalusia, Spain between the years 2005 and 2018</li>
-  <li><b>URL: </b> <a href="https://sos2021-dic-jlrm.herokuapp.com">https://sos2021-dic-jlrm.herokuapp.com</a></li>
+  <li><b>Descripción del proyecto: </b> El proyecto se basa en analizar las causas de muerte por enfermedades en Andalucia a nivel provincial en el periodo de 2005 y 2018</li>
+  <li><b>Repositorio: </b> <a href="https://github.com/gti-sos/sos2021-dic-jlrm">/gti-sos/sos2021-dic-jlrm</a></li>
   <li><b>URL: </b> <a href="https://sos2021-dic-jlrm.herokuapp.com">https://sos2021-dic-jlrm.herokuapp.com</a></li>
   <li> API v2 y su documentaciรณn 
   <ul>
-      <li>Enlace API:</li>
+      <li>Enlace API: <a href="https://sos2021-dic-jlrm.herokuapp.com/api/v2/death-stats">https://sos2021-dic-jlrm.herokuapp.com/api/v2/death-stats</a></li>
       <li>Enlace documentacion postman:</li>
+	<ul>
+		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGmU">V1</a></ul>
+		<li><a href="https://documenter.getpostman.com/view/18555262/UVJckGvC">V2</a></ul>
   </ul>
   <li>
 </ul>

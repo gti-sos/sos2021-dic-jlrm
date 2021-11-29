@@ -12,7 +12,7 @@
 	import Graph6 from './DeathStatsGUI/grafica6.svelte';
 	import NotFound from './NotFound.svelte';
 	import Info from './Info.svelte';
-	import Integrations from './NotFound.svelte';
+	import Integrations from './Integrations.svelte';
 
 
 	const routes = {
@@ -67,7 +67,7 @@
         </DropdownMenu>
       </Dropdown>
 	  	 <Dropdown nav inNavbar>
-        <DropdownToggle nav caret><a href="#/integrations">Integraciones</a></DropdownToggle>
+        <DropdownToggle nav caret>Integraciones</DropdownToggle>
         <DropdownMenu end>
           <DropdownItem><a href="#/graph3">Grafico Integrado</a></DropdownItem>
 	      <DropdownItem><a href="#/graph2">Grafico Usado 1</a></DropdownItem>
