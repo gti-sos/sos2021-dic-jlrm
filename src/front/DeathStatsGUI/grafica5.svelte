@@ -42,8 +42,8 @@ async function loadGraph(){
         var plata = [] ;
         var country = [] ;
         datos.forEach((anxiety) => {
-            plata.push(anxiety.data.Population);
-            country.push(anxiety.data.Year);
+            plata.push(anxiety.Population);
+            country.push(anxiety.Year);
         });
 		
 		
