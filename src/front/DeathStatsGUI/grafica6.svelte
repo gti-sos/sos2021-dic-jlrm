@@ -109,7 +109,7 @@ Highcharts.chart('container', {
     }, {
         name: 'USSR/Russia',
         data: anio
-        ]
+	}
     }]
 });
 
