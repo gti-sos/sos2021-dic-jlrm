@@ -227,7 +227,7 @@ module.exports.register = (app, BASE_API_PATH_v2) => {
  }); */
 
 
-    app.post(BASE_API_PATH_v2 + "/death-stats/:province/:date", (req, res) => {
+    app.post(BASE_API_PATH_v2 + "/death-stats/:province/:year", (req, res) => {
         console.log("POST no valido/encontrado");
         return res.sendStatus(405);
 
