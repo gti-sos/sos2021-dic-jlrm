@@ -41,8 +41,12 @@
         var usd = [] ;
         var btc = [] ;
         data_x.forEach((x) => {
-            usd.push(x.price_usd);
-            btc.push(x.price_btc);
+		
+			let float_usd = parseFloat(x.price_usd)
+			let float_btc = parseFloat(x.price_btc)
+            usd.push(float_usd);
+            btc.push(float_btc);
+                
         });
         
 Highcharts.chart('container', {
