@@ -1,182 +1,190 @@
 <script>
-   import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
-    var errorMsg = "";
-    var datos = [];
-    const BASE_API_CRYPTO = "https://api.coinstats.app/public/v1/coins"
-   
-    async function loadRentals() {
-        console.log("Loading data...");
-        const res = await fetch(BASE_API_CRYPTO).then(
-          function (res) {
-            if (res.ok) {
-              errorMsg = "";
-              console.log("OK");
-            } else {
-              if (res.status === 500) {
-                errorMsg = "No se ha podido acceder a la base de datos";
-              }
-              console.log("ERROR!" + errorMsg);
+  import { Nav, NavItem, NavLink } from "sveltestrap";
+  var errorMsg = "";
+  var datos = [];
+  const BASE_API_RENTALS = "https://sos2021-07.herokuapp.com/api/v1/rentals"
+ 
+  async function loadRentals() {
+      console.log("Loading data...");
+      const res = await fetch(BASE_API_RENTALS).then(
+        function (res) {
+          if (res.ok) {
+            errorMsg = "";
+            console.log("OK");
+          } else {
+            if (res.status === 500) {
+              errorMsg = "No se ha podido acceder a la base de datos";
             }
+            console.log("ERROR!" + errorMsg);
           }
-        );
-      }
-    
-      async function getDatos() {
-        console.log("Fetching data...");
-        await loadRentals();
-        const res = await fetch(BASE_API_CRYPTO);
-        if (res.ok) {
-          const json = await res.json();
-          datos = json;
-          console.log(`We have received ${datos.length} stats.`);
-          console.log("Ok");
-        } else {
-          errorMsg = "Error recuperando datos";
-          console.log("ERROR!" + errorMsg);
         }
+      );
+    }
+  
+    async function getDatos() {
+      console.log("Fetching data...");
+      await loadRentals();
+      const res = await fetch(BASE_API_RENTALS);
+      if (res.ok) {
+        const json = await res.json();
+        datos = json;
+        console.log(`We have received ${datos.length} stats.`);
+        console.log("Ok");
+      } else {
+        errorMsg = "Error recuperando datos";
+        console.log("ERROR!" + errorMsg);
       }
-
-async function loadGraph(){
-   await getDatos();
-   		let data_c = Object.values(datos["coins"]);
-        var volumen = [] ;
-        var nombre = [] ;
-        data_c.forEach((d) => {
-            volumen.push(d["volume"]);
-            nombre.push(d["id"]);
-        });
-		
-		
-		
-// Set up the chart
-Highcharts.chart('container', {
-
-    chart: {
-        styledMode: true
-    },
-
-    title: {
-        text: 'Pie point CSS'
-    },
-
-
-
-    series: [{
-        type: 'pie',
-        allowPointSelect: true,
-        keys: ['name', 'y', 'selected', 'sliced'],
-        data: [
-		data_c.forEach((d) => {
-		[d["volume"], d["id"], false],
-        });
-            [nombre, volumen, false],
-            ['Pears', 71.5, false],
-            ['Oranges', 106.4, false],
-            ['Plums', 129.2, false],
-            ['Bananas', 144.0, false],
-            ['Peaches', 176.0, false],
-            ['Prunes', 135.6, true, true],
-            ['Avocados', 148.5, false]
-        ],
-        showInLegend: true
-    }]
-});
-
-}
-
+    }
+    async function loadGraph(){
+      await getDatos();
+      var renta = [];
+      var metros = [] ;
+      var anyo = [] ;
+      datos.forEach((dato_rentals) => {
+          renta.push(dato_rentals.rent);
+          metros.push(dato_rentals.meter);
+          anyo.push(dato_rentals.year);
+      });
+      console.log(metros);
+      console.log(anyo);
+      console.log(renta);
+      Highcharts.chart('container', {
+          chart: {
+              type: 'packedbubble',
+              height: '100%'
+          },
+          title: {
+              text: 'Uso de la API de Alquileres'
+          },
+          tooltip: {
+              useHTML: true,
+              pointFormat: '<b>{point.name}:</b> {point.value} '
+          },
+          plotOptions: {
+              packedbubble: {
+                  minSize: '30%',
+                  maxSize: '100%',
+                  zMin: 0,
+                  zMax: 1000,
+                  layoutAlgorithm: {
+                      splitSeries: false,
+                      gravitationalConstant: 0.02
+                  },
+                  dataLabels: {
+                      enabled: true,
+                      format: '{point.name}',
+                      filter: {
+                          property: 'y',
+                          operator: '>',
+                          value: 250
+                      },
+                      style: {
+                          color: 'black',
+                          textOutline: 'none',
+                          fontWeight: 'normal'
+                      }
+                  }
+              }
+          },
+          series:  [{
+              name: 'Metros',
+              data: metros
+          },
+          {
+              name: 'Año',
+              data: anyo
+          },
+          {
+              name: 'Renta',
+              data: renta
+          }]
+      });
+  }        
+    
 </script>
 
 <svelte:head>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-3d.js"></script><script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js" on:load={loadGraph}></script>
 </svelte:head>
 
-<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
-
 <main>
-  <center><h1>Volumen criptomonedas</h1></center>
-<br>
-  <br>
   <Nav>
     <NavItem>
-    <NavLink href="/">Pagina Principal</NavLink>
+    <NavLink href="/">Página Principal</NavLink>
     </NavItem>
     <NavItem>
     <NavLink href="#/integrations">Integraciones</NavLink>
     </NavItem>
     <NavItem>
-        <NavLink href="https://sos2021-sep-jpcc.herokuapp.com/#/anxiety_stats">Cargar Datos Iniciales</NavLink>
-        </NavItem>
+      <NavLink href="https://sos2021-07.herokuapp.com/#/rentals">Cargar Datos Iniciales</NavLink>
+      </NavItem>
     </Nav>      
-  <br>
-<figure class="highcharts-figure">
-    <div id="container"></div>
-    <p class="highcharts-description">
+
+
       
-    </p>
-</figure>
-
-
+    <figure class="highcharts-figure">
+      <div id="container"></div>
+      <p class="highcharts-description">
+         
+      </p>
+  </figure>
+  {#if errorMsg}
+  <p>{errorMsg}</p>
+  {/if}
 </main>
 
 <style>
-@import "https://code.highcharts.com/css/highcharts.css";
-
-.highcharts-pie-series .highcharts-point {
-    stroke: #ede;
-    stroke-width: 2px;
+  main {
+      text-align: center;
+      padding: 30px;       
+  }
+  p.error{
+      color: red; 
+      text-align:center;
+      font-size: 20px;
+      margin-top:80px;
+    }
+  
+  .highcharts-figure, .highcharts-data-table table {
+  min-width: 320px; 
+  max-width: 800px;
+  margin: 1em auto;
 }
-
-.highcharts-pie-series .highcharts-data-label-connector {
-    stroke: silver;
-    stroke-dasharray: 2, 2;
-    stroke-width: 2px;
+#container {
+  height: 800px;
 }
-
-.highcharts-figure,
+.highcharts-tooltip h3 {
+margin: 0.3em 0;
+}
 .highcharts-data-table table {
-    min-width: 320px;
-    max-width: 600px;
-    margin: 1em auto;
+font-family: Verdana, sans-serif;
+border-collapse: collapse;
+border: 1px solid #EBEBEB;
+margin: 10px auto;
+text-align: center;
+width: 100%;
+max-width: 500px;
 }
-
-.highcharts-data-table table {
-    font-family: Verdana, sans-serif;
-    border-collapse: collapse;
-    border: 1px solid #ebebeb;
-    margin: 10px auto;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
-
 .highcharts-data-table caption {
-    padding: 1em 0;
-    font-size: 1.2em;
-    color: #555;
+padding: 1em 0;
+font-size: 1.2em;
+color: #555;
 }
-
 .highcharts-data-table th {
-    font-weight: 600;
-    padding: 0.5em;
+font-weight: 600;
+padding: 0.5em;
 }
-
-.highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
-    padding: 0.5em;
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+padding: 0.5em;
 }
-
-.highcharts-data-table thead tr,
-.highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+background: #f8f8f8;
 }
-
 .highcharts-data-table tr:hover {
-    background: #f1f7ff;
+background: #f1f7ff;
 }
-
-
 </style>
