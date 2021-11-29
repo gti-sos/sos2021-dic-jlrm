@@ -4,7 +4,7 @@ var Datastore = require("nedb");
 var db = new Datastore();
 
 
-module.exports.register = (app, BASE_API_PATH_v2) => {
+module.exports.register = (app, BASE_API_PATH) => {
 var deathStats = [
 	{
 		"province" : "almeria",
@@ -60,9 +60,16 @@ var deathStatsSchema = {
 };
 	
     //Creacion de recursos
-app.get(BASE_API_PATH+"/death-stats/loadInitialData", (req,res) =>{
-	res.send(JSON.stringify(deathStats,null,2));
-});
+   app.get(BASE_API_PATH + "death-stats/loadInitialData", (req, res) => {
+
+        if (db.getAllData().length == 0) {
+            db.insert(deathStats);
+            res.status(200).send("Data created sucessfully!!");
+        } else {
+            res.sendStatus(409);
+        }
+
+    });
 
 //GET a la lista de recursos
 app.get(BASE_API_PATH+"/death-stats", (req,res)=>{
