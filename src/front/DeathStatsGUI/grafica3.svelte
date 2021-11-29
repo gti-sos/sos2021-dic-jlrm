@@ -86,12 +86,12 @@
 
 <main>
     
-    <h3 style="text-align: center;"> Integración 4 Juegos de azar</h3>
+    <h3 style="text-align: center;">Integracion muertes Andalucia con datos esquizofrenia</h3>
 
     <div id="myDiv"></div>
     <Nav>
         <NavItem>
-        <NavLink href="/">Página Principal</NavLink>
+        <NavLink href="/">Pagina Principal</NavLink>
         </NavItem>
         <NavItem>
         <NavLink href="#/integrations">Integraciones</NavLink>

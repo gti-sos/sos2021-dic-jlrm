@@ -48,6 +48,16 @@ app.use(pathschildren, function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
+//Integracion proxy Usada grafico 5
+var pathscoin = '/public/v1/coins/';
+var apiServercoin = 'https://api.coinstats.app/';
+
+app.use(pathscoin, function (req, res) {
+  var url = apiServercoin + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
 app.use("/", express.static(path.join(__dirname,"public")));
 
 app.listen(port, () =>{
