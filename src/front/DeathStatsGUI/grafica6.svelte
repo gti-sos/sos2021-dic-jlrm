@@ -45,17 +45,17 @@
             price_btc.push(x["price_btc"]);
         });
         
-        Highcharts.chart('container', {
+Highcharts.chart('container', {
     chart: {
         type: 'packedbubble',
         height: '100%'
     },
     title: {
-        text: 'Price of cryptos'
+        text: 'Carbon emissions around the world (2014)'
     },
     tooltip: {
         useHTML: true,
-        pointFormat: '<b>{point.name}:</b> {point.value} prices'
+        pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
     },
     plotOptions: {
         packedbubble: {
@@ -84,13 +84,19 @@
         }
     },
     series: [{
-        name: 'Precio bitcoin',
-        data: price_btc
-        
-    }, {
-        name: 'Precio USD',
-        data:  price_usd
-        
+        name: 'Europe',
+        data: [{
+            name: 'Germany',
+            value: 767.1
+        }, {
+            name: 'Croatia',
+            value: 20.7
+        },
+			{
+			name: 'USD',
+			value: price_usd
+			}
+        ]
     }]
 });
 
