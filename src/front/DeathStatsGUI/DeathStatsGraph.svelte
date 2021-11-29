@@ -58,8 +58,11 @@ async function loadGraph(){
       console.log("Death Stat Chart DaTa: " + deathStatsChartData);
 Highcharts.chart('container', {
 
+	title: {
+		text: 'Estadisticas de muerte por enfermedades en Andalucia'
+	},
     subtitle: {
-        text: 'Source: thesolarfoundation.com'
+        text: '-------------------'
     },
 
     yAxis: {
@@ -122,16 +125,13 @@ Highcharts.chart('container', {
 </svelte:head>
 
 <main>
-  <center><h1>Estadísticas de muerte por enfermedades en Andalucia</h1></center>
+  <center><h1>Estadisticas de muerte por enfermedades en Andalucia</h1></center>
 <br>
 
   <br><br>
    <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
-        Basic line chart showing trends in a dataset. This chart includes the
-        <code>series-label</code> module, which adds a label to each line for
-        enhanced readability.
     </p>
 </figure>
 

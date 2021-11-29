@@ -111,9 +111,6 @@ Highcharts.chart('container', {
     <NavItem>
     <NavLink href="#/integrations">Integraciones</NavLink>
     </NavItem>
-    <NavItem>
-        <NavLink href="https://sos2021-sep-jpcc.herokuapp.com/#/anxiety_stats">Cargar Datos Iniciales</NavLink>
-        </NavItem>
     </Nav>      
   <br>
 <figure class="highcharts-figure">
