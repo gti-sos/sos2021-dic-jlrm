@@ -2,7 +2,7 @@
   import { Nav, NavItem, NavLink } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_COIN = "https://api.coinlore.net/api/tickers/?start=20&limit=10"
+    const BASE_API_COIN = "https://parallelum.com.br/fipe/api/v1/carros/marcas"
      async function loadRentals() {
         console.log("Loading data...");
         const res = await fetch(BASE_API_COIN).then(
@@ -37,15 +37,12 @@
 	  
       async function loadGraph(){
         await getDatos();
-   		let data_x = Object.values(datos["data"]);
         let usd = [] ;
         let btc = [] ;
-        data_x.forEach((x) => {
-		
-			let float_usd = parseFloat(x.price_usd)
-			let float_btc = parseFloat(x.price_btc)
+        data.forEach((x) => {
+			let float_usd = parseINT(x.codigo)
             usd.push(float_usd);
-            btc.push(float_btc);
+            btc.push(x.nome);
                 
         });
         
