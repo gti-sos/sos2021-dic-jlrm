@@ -24,6 +24,9 @@
   <a href="#/graph6"><Button light style="margin:2px;">Grafico externo 2</Button></a>
 
 </ButtonGroup>
+
+<br>
+<a href="#/about"><Button light style="margin:2px;">Video del proyecto</Button></a>
 </center></Col>
   </Row>
 </Container></main>

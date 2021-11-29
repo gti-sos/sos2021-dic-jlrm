@@ -86,11 +86,11 @@
               }
           },
           series:  [{
-              name: 'Metros',
+              name: 'Poblacion',
               data: uno
           },
           {
-              name: 'Año',
+              name: 'Area',
               data: dos
           }]
       });
