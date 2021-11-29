@@ -21,7 +21,7 @@
       });
     }
 
-    const BASE_API_PATH = "/api/v1";
+    const BASE_API_PATH = "/api/v2";
 
     async function getDeathStats(){
         console.log("Fetching death stats...");
@@ -64,7 +64,7 @@ Highcharts.chart('container', {
 
     yAxis: {
         title: {
-            text: 'Año de Andalucia'
+            text: 'Muertes'
         },
 		categories: deathStatsChartYear,
     },
@@ -124,11 +124,7 @@ Highcharts.chart('container', {
 <main>
   <center><h1>Estadísticas de muerte por enfermedades en Andalucia</h1></center>
 <br>
- <Alert color="secondary">
-    La siguiente tabla muestra información sobre las muertes que se han producido en las provincias de Andalucia año
-	tras año, en este caso intenta asociar las muertes producidas por enfermedades, como es el caso de muertes por 
-	tumor, enfermedades del sistema respiratorio y enfermedades del sistema circulatorio.
-  </Alert>
+
   <br><br>
    <figure class="highcharts-figure">
     <div id="container"></div>

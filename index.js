@@ -58,6 +58,16 @@ app.use(pathscoin, function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
+//Integracion proxy Usada grafico 5
+var pathscountrie = '/v2/lang/es';
+var apiServercountrie = 'https://restcountries.com/';
+
+app.use(pathscountrie, function (req, res) {
+  var url = apiServercountrie + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
 app.use("/", express.static(path.join(__dirname,"public")));
 
 app.listen(port, () =>{
