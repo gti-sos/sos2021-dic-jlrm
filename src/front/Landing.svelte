@@ -8,6 +8,7 @@
 	<center><h1>Muertes por enfermedades en las provincias de Andalucía por Año</h1></center>
 	<br>
 <Container style="background-color:#121212; color:white; border-radius:4px; padding: 20px">
+	<center><img src="./images/mapa.png"></img></center>
   <Row>
     <Col>.col</Col>
   </Row>
