@@ -90,6 +90,8 @@ Highcharts.chart('container', {
 <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
+<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
+
 <main>
   <center><h1>Volumen criptomonedas</h1></center>
 <br>
