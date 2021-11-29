@@ -2,7 +2,7 @@
    import { Nav, NavItem, NavLink, Alert } from "sveltestrap";
     var errorMsg = "";
     var datos = [];
-    const BASE_API_CRYPTO = "https://parallelum.com.br/fipe/api/v1/motos/marcas"
+    const BASE_API_CRYPTO = "https://api.coinstats.app/public/v1/coins"
    
     async function loadRentals() {
         console.log("Loading data...");
@@ -41,9 +41,9 @@ async function loadGraph(){
    		let data_c = Object.values(datos["coins"]);
         var volumen = [] ;
         var nombre = [] ;
-        datos.forEach((d) => {
-            volumen.push(d.codigo);
-            nombre.push(d.nome);
+        data_c.forEach((d) => {
+            volumen.push(d["volume"]);
+            nombre.push(d["id"]);
         });
 		
 		
@@ -66,14 +66,7 @@ Highcharts.chart('container', {
         allowPointSelect: true,
         keys: ['name', 'y', 'selected', 'sliced'],
         data: [
-            [nombre, volumen, false],
-            ['Pears', 71.5, false],
-            ['Oranges', 106.4, false],
-            ['Plums', 129.2, false],
-            ['Bananas', 144.0, false],
-            ['Peaches', 176.0, false],
-            ['Prunes', 135.6, true, true],
-            ['Avocados', 148.5, false]
+           nombre, volumen
         ],
         showInLegend: true
     }]
